@@ -1,4 +1,10 @@
 <?php
+
+namespace PROJETO\config;
+
+use PDO;
+use PDOException;
+
 class Database
 {
     private $database = 'lista_de_contatos';

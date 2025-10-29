@@ -1,14 +1,6 @@
 <?php
-require '../Models/Usuario.php';
+require 'http://localhost/Projetos%20de%20Programação/lista_de_contatos/vendor/autoload.php';
 
+use PHP\Models\Usuario as User;
 
-class AuthController
-{
-    private function criarObjetoUsuario()
-    {
-        $n = $_POST['name'];
-        $e = $_POST['email'];
-        $s = $_POST['password'];
-        return $User = new Usuario($n, $e, $s);
-    }
-}
+class AuthController {}
