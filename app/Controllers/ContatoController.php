@@ -1,7 +1,10 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PROJETO\Models\Usuario as User;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+
 
 class ContatoController
 {
@@ -12,10 +15,11 @@ class ContatoController
         $s = $_POST['password'];
 
 
-        $Usuario = new User($n, $e, $s);
+        $Usuario = new User($e, $s, $n);
 
         if ($Usuario->cadastrarUsuario()) {
-            echo 'Sucesso ao enviar dados';
+            header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php');
+            exit;
         } else {
             echo 'Erro ao enviar dados';
         }

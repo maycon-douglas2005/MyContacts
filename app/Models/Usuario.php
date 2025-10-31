@@ -2,6 +2,10 @@
 
 namespace PROJETO\Models;
 
+session_start();
+
+
+
 use PROJETO\config\Database;
 
 class Usuario
@@ -10,12 +14,16 @@ class Usuario
     private $email;
     private $password;
 
-
-    public function __construct($name, $email, $password)
+    public function __construct($email = null, $password = null, $name = null)
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
+        if ($name && $email && $password) {
+            $this->name = $name;
+            $this->email = $email;
+            $this->password = $password;
+        } else {
+            $this->email = $email;
+            $this->password = $password;
+        }
     }
 
     public function cadastrarUsuario()
@@ -26,6 +34,20 @@ class Usuario
         $stmt->bindParam(":nome", $this->name);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":senha", $this->password);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function loginUsuario()
+    {
+        $bd = new Database();
+        $querie = "SELECT nome FROM usuarios WHERE email =  :email AND senha = :senha";
+        $stmt = $bd->realizandoConexao()->prepare($querie);
+        $stmt->bindParam(":email", $_SESSION['email']);
+        $stmt->bindParam(":senha", $_SESSION['senha']);
         if ($stmt->execute()) {
             return true;
         } else {
