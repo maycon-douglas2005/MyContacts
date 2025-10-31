@@ -1,6 +1,6 @@
 {
-  "name": "php/src",
-  "description": "Projeto de lista de contatos",
+  "name": "maycon/lista-de-contatos",
+  "description": "Aplicação MVC em PHP para gerenciar contatos",
   "type": "project",
   "autoload": {
     "psr-4": {

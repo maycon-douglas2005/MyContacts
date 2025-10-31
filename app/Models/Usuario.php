@@ -4,10 +4,6 @@ namespace PROJETO\Models;
 
 use PROJETO\config\Database;
 
-require 'http://localhost/Projetos%20de%20Programação/lista_de_contatos/config/Database.php';
-
-
-
 class Usuario
 {
     private $name;
@@ -29,7 +25,11 @@ class Usuario
         $stmt = $bd->realizandoConexao()->prepare($querie);
         $stmt->bindParam(":nome", $this->name);
         $stmt->bindParam(":email", $this->email);
-        $stmt->bindParam(":password", $this->password);
-        $stmt->execute();
+        $stmt->bindParam(":senha", $this->password);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

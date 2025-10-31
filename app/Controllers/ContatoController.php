@@ -13,11 +13,17 @@ class ContatoController
 
 
         $Usuario = new User($n, $e, $s);
-        $Usuario->cadastrarUsuario();
+
         if ($Usuario->cadastrarUsuario()) {
-            echo 'Sucesso';
+            echo 'Sucesso ao enviar dados';
         } else {
-            echo 'Erro';
+            echo 'Erro ao enviar dados';
         }
     }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $ContatoController = new ContatoController();
+
+    $ContatoController->cadastrar();
 }
