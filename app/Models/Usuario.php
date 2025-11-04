@@ -4,9 +4,9 @@ namespace PROJETO\Models;
 
 session_start();
 
-
-
+use Exception;
 use PROJETO\config\Database;
+use PROJETO\Helpers\EmailHelper as Email;
 
 class Usuario
 {
@@ -28,16 +28,28 @@ class Usuario
 
     public function cadastrarUsuario()
     {
-        $bd = new Database();
-        $querie = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-        $stmt = $bd->realizandoConexao()->prepare($querie);
-        $stmt->bindParam(":nome", $this->name);
-        $stmt->bindParam(":email", $this->email);
-        $stmt->bindParam(":senha", $this->password);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
+        try {
+            if (Email::validarEmail($this->email) === true) {
+                $bd = new Database();
+                $querie = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
+                $stmt = $bd->realizandoConexao()->prepare($querie);
+                $stmt->bindParam(":nome", $this->name);
+                $stmt->bindParam(":email", $this->email);
+                $stmt->bindParam(":senha", $this->password);
+                if ($stmt->execute()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } elseif (Email::validarEmail($this->email) === 2) {
+                return 'Formato de email invalido';
+            } elseif (Email::validarEmail($this->email) === 3) {
+                return 'Dominiod e email invalid';
+            } else {
+                return '<h1>Erro não identificado</h1>';
+            }
+        } catch (Exception $e) {
+            return $e;
         }
     }
 

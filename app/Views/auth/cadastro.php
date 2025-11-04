@@ -9,7 +9,7 @@ require_once '../partials/head.php';
 
     <main class="container-fluid d-flex flex-fill ">
         <div class="row vw-100 d-flex flex-row justify-content-center">
-            <form action="http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Controllers/ContatoController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
+            <form action="http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
                 <h2>Registro</h2>
                 <div class="campos d-flex flex-column row g-2">
                     <input type="text" name="name" id="" class="col-auto" placeholder="Primeiro Nome" required maxlength="10">
