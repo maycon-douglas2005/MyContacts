@@ -4,6 +4,8 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PROJETO\Models\Usuario as User;
 
+session_start();
+
 class UsuarioController
 {
     public function cadastrar()
@@ -12,20 +14,21 @@ class UsuarioController
         $e = $_POST['email'];
         $s = $_POST['password'];
 
-
-        $Usuario = new User($e, $s, $n);
-
-        if ($Usuario->cadastrarUsuario()) {
-            header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php');
-            exit;
-        } elseif ($Usuario->cadastrarUsuario() === 1) {
-            //header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/auth/cadastro.php');
-            echo "Erro formato email";
-        } else if ($Usuario->cadastrarUsuario() === 2) {
-            //header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/auth/cadastro.php');
-            echo 'Erro dominio email';
+        $resultVerificacaoCamposPreenchidos = User::verificacaoCamposPreenchidos($e, $s, $n);
+        if ($resultVerificacaoCamposPreenchidos) {
+            $Usuario = new User($e, $s, $n);
+            $_SESSION['Usuario'] = $Usuario;
+            $resultadoCadastrarUsuario = $Usuario->cadastrarUsuario();
+            if ($resultadoCadastrarUsuario) {
+                header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php');
+                exit;
+            } elseif ($resultadoCadastrarUsuario === false) {
+                echo "Erro no formato ou dominio do email";
+            } else {
+                echo 'Erro: ' . $resultadoCadastrarUsuario;
+            }
         } else {
-            echo 'Erro ao enviar dados';
+            echo "Valores nao preenchidos";
         }
     }
 }

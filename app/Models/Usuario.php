@@ -26,25 +26,39 @@ class Usuario
         }
     }
 
+    public function __toString()
+    {
+        return "Nome: {$this->name} | Email: {$this->email} | Senha: {$this->password}";
+    }
+
+    public static function verificacaoCamposPreenchidos($e, $s, $n)
+    {
+        if (empty($e) || empty($s) || empty($n)) {
+            return false;
+        }
+        return true;
+    }
+
     public function cadastrarUsuario()
     {
+        $resultadoValidarEmail = Email::validarEmail($this->email);
         try {
-            if (Email::validarEmail($this->email) === true) {
+            if ($resultadoValidarEmail === true) {
                 $bd = new Database();
                 $querie = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
                 $stmt = $bd->realizandoConexao()->prepare($querie);
                 $stmt->bindParam(":nome", $this->name);
                 $stmt->bindParam(":email", $this->email);
-                $stmt->bindParam(":senha", $this->password);
+                $stmt->bindValue(":senha", password_hash($this->password, PASSWORD_DEFAULT));
                 if ($stmt->execute()) {
                     return true;
                 } else {
                     return false;
                 }
-            } elseif (Email::validarEmail($this->email) === 2) {
-                return 'Formato de email invalido';
-            } elseif (Email::validarEmail($this->email) === 3) {
-                return 'Dominiod e email invalid';
+            } elseif ($resultadoValidarEmail === 2) {
+                return false;
+            } elseif ($resultadoValidarEmail === 3) {
+                return false;
             } else {
                 return '<h1>Erro não identificado</h1>';
             }
