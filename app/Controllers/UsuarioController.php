@@ -20,12 +20,16 @@ class UsuarioController
             $Usuario = new User($e, $s, $n);
             // $_SESSION['Usuario'] = $Usuario;
             $resultadoCadastrarUsuario = $Usuario->cadastrarUsuario();
-            if ($resultadoCadastrarUsuario) {
-                echo  $resultadoCadastrarUsuario;
+            if ($resultadoCadastrarUsuario === true) {
+
                 header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php');
                 exit;
-            } elseif ($resultadoCadastrarUsuario === false) {
-                echo "Erro no formato ou dominio do email";
+            } elseif ($resultadoCadastrarUsuario === 2) {
+                echo "Erro no formato do email ";
+            } elseif ($resultadoCadastrarUsuario === 3) {
+                echo "Erro no dominio do email";
+            } elseif ($resultadoCadastrarUsuario === 4) {
+                echo "Email já cadastrado";
             } else {
 
                 echo 'Erro: ' . $resultadoCadastrarUsuario;
@@ -37,7 +41,7 @@ class UsuarioController
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ContatoController = new UsuarioController();
+    $UsuarioController = new UsuarioController();
 
-    $ContatoController->cadastrar();
+    $UsuarioController->cadastrar();
 }
