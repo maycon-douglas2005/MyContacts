@@ -2,11 +2,12 @@
 
 namespace PROJETO\Models;
 
-session_start();
+// session_start();
 
 use Exception;
 use PROJETO\config\Database;
 use PROJETO\Helpers\EmailHelper as Email;
+use PDO;
 
 class Usuario
 {
@@ -44,12 +45,15 @@ class Usuario
         $resultadoValidarEmail = Email::validarEmail($this->email);
         try {
             if ($resultadoValidarEmail === true) {
+
                 $bd = new Database();
+
                 $querie = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
                 $stmt = $bd->realizandoConexao()->prepare($querie);
                 $stmt->bindParam(":nome", $this->name);
                 $stmt->bindParam(":email", $this->email);
                 $stmt->bindValue(":senha", password_hash($this->password, PASSWORD_DEFAULT));
+
                 if ($stmt->execute()) {
                     return true;
                 } else {
@@ -66,7 +70,7 @@ class Usuario
             return $e;
         }
     }
-
+    /* 
     public function loginUsuario()
     {
         $bd = new Database();
@@ -79,5 +83,5 @@ class Usuario
         } else {
             return false;
         }
-    }
+    }*/
 }
