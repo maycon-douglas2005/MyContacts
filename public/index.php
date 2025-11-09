@@ -1,5 +1,6 @@
 <?php
 $baseUrl = '/Projetos%20de%20Programação/lista_de_contatos/public/index.php';
+$homeDisabled = true;
 require_once '../app/Views/partials/head.php';
 ?>
 
