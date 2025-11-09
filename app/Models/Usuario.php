@@ -2,7 +2,7 @@
 
 namespace PROJETO\Models;
 
-// session_start();
+
 
 use Exception;
 use PROJETO\config\Database;
@@ -36,8 +36,18 @@ class Usuario
 
     public static function verificacaoCamposPreenchidos($e, $s, $n)
     {
+        if(session_status() === PHP_SESSION_NONE){
+            session_start();
+        }
         if (empty($e) || empty($s) || empty($n)) {
+            $_SESSION['erro_campo_vazio'] = true;
+            ?> <script>console.log("Dentro do if de verificação de campos vazios")</script> <?php
             return false;
+            
+        }
+        if(isset($_SESSION['erro_campo_vazio'])){
+            unset($_SESSION['erro_campo_vazio']);
+            ?> <script>console.log("Dentro do if do unset")</script> <?php
         }
         return true;
     }
