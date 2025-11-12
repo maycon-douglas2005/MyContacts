@@ -22,7 +22,7 @@ class UsuarioController
             $resultadoCadastrarUsuario = $Usuario->cadastrarUsuario();
             if ($resultadoCadastrarUsuario === true) {
 
-                header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php');
+                header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php?sucesso=true');
                 exit;
             } elseif ($resultadoCadastrarUsuario === 2) {
                 echo "Erro no formato do email ";
