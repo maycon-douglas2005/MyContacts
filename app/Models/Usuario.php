@@ -7,7 +7,7 @@ namespace PROJETO\Models;
 use Exception;
 use PROJETO\config\Database;
 use PROJETO\Helpers\EmailHelper as Email;
-use PDO;
+
 
 class Usuario
 {
@@ -36,19 +36,18 @@ class Usuario
 
     public static function verificacaoCamposPreenchidos($e, $s, $n)
     {
-        if(session_status() === PHP_SESSION_NONE){
+        if (session_status() === PHP_SESSION_NONE) {
             session_start();
+        }
+        if (isset($_SESSION['erro_campo_vazio'])) {
+            unset($_SESSION['erro_campo_vazio']);
         }
         if (empty($e) || empty($s) || empty($n)) {
             $_SESSION['erro_campo_vazio'] = true;
-            ?> <script>console.log("Dentro do if de verificação de campos vazios")</script> <?php
+
             return false;
-            
         }
-        if(isset($_SESSION['erro_campo_vazio'])){
-            unset($_SESSION['erro_campo_vazio']);
-            ?> <script>console.log("Dentro do if do unset")</script> <?php
-        }
+
         return true;
     }
 

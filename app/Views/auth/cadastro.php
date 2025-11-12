@@ -1,10 +1,14 @@
 <?php
 
 session_start();
-$baseUrl = '/lista-de-contatos/public/index.php';
+$baseUrl = '/lista_de_contatos/public/index.php';
 $homeDisabled = true;
 require_once '../partials/head.php';
 
+//gambiarra temporaria pq o erro de campos vazios estava aparecendo assim q o usuário entrava nessa página
+if (!isset($_GET['erro'])) {
+    unset($_SESSION['erro_campo_vazio']);
+}
 ?>
 
 <body class="d-flex flex-column vh-100">
@@ -13,16 +17,16 @@ require_once '../partials/head.php';
 
     <main class="container-fluid d-flex flex-fill ">
         <div class="row vw-100 d-flex flex-row justify-content-center">
-            <form action="http://localhost/lista-de-contatos/app/Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
+            <form action="http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
                 <h2>Registro</h2>
                 <div class="campos d-flex flex-column row g-2">
-                    <?php if(isset($_SESSION['erro_campo_vazio'])):  ?><script> console.log("Dentro do if do cadastro")</script> <p class="alert alert-danger">Preencha todos os campos!</p> <?php endif; ?>
+                    <?php if (isset($_SESSION['erro_campo_vazio'])):  ?> <p class="alert alert-danger">Preencha todos os campos!</p> <?php endif; ?>
 
-                    <input type="text" name="name"  class="col-auto" placeholder="Primeiro Nome"  >
+                    <input type="text" name="name" class="col-auto" placeholder="Primeiro Nome">
 
-                    <input type="email" name="email"  class="col-auto" placeholder="Email"  >
-                    
-                    <input type="password" name="password" class="col-auto"  placeholder="Senha"  minlength="4" >
+                    <input type="email" name="email" class="col-auto" placeholder="Email">
+
+                    <input type="password" name="password" class="col-auto" placeholder="Senha" minlength="4">
 
                     <button class="btn btn-success btn-outline-black">Enviar</button>
                 </div>

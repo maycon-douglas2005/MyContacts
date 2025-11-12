@@ -22,7 +22,7 @@ class UsuarioController
             $resultadoCadastrarUsuario = $Usuario->cadastrarUsuario();
             if ($resultadoCadastrarUsuario === true) {
 
-                header('Location: http://localhost/lista-de-contatos/app/Views/contacts/listaDeContatos.php');
+                header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php');
                 exit;
             } elseif ($resultadoCadastrarUsuario === 2) {
                 echo "Erro no formato do email ";
@@ -35,10 +35,10 @@ class UsuarioController
                 echo 'Erro: ' . $resultadoCadastrarUsuario;
             }
         } else {
-            if(!isset($_SESSION['erro_campo_vazio'])){
+            if (!isset($_SESSION['erro_campo_vazio'])) {
                 $_SESSION['erro_campo_vazio'] = true;
             }
-            header('Location: http://localhost/lista-de-contatos/app/Views/auth/cadastro.php');
+            header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/auth/cadastro.php?erro=true');
             exit;
         }
     }
