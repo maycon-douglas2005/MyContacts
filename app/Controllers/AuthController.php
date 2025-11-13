@@ -8,22 +8,31 @@ session_start();
 
 use PROJETO\Models\Usuario as User;
 
-$_SESSION['email'] = $_POST['email'];
-$_SESSION['password'] = $_POST['password'];
+
 
 class AuthController
 {
-    public function login()
+    public static function login()
     {
-        $Usuario = new User($_SESSION['email'], $_SESSION['password']);
+        $e = $_POST['email'];
+        $s = $_POST['password'];
 
-        if ($Usuario->loginUsuario()) {
-            header('Location: ../Views/contacts/listaDeContatos.php');
-        } else {
-            echo 'Nao foi possivel logar';
+        
+
+        if (User::loginUsuario($e, $s)) {
+            header('Location: ../Views/contacts/listaDeContatos.php?sucessoLogin=true');
+            exit;
         }
+
+        if (!isset($_SESSION['erro_campo_vazio'])) {
+                $_SESSION['erro_campo_vazio'] = true;
+            }
+        header('Location: ../Views/auth/login.php?erroLogin=true');
+        exit;
     }
 }
 
-$AuthController = new AuthController();
-$AuthController->login();
+if($_SERVER['REQUEST_METHOD'] === "POST"){
+    AuthController::login();
+}
+

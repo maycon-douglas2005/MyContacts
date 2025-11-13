@@ -3,11 +3,10 @@
 namespace PROJETO\Models;
 
 
-
 use Exception;
 use PROJETO\config\Database;
 use PROJETO\Helpers\EmailHelper as Email;
-
+use PDO;
 
 class Usuario
 {
@@ -42,7 +41,7 @@ class Usuario
         if (isset($_SESSION['erro_campo_vazio'])) {
             unset($_SESSION['erro_campo_vazio']);
         }
-        if (empty($e) || empty($s) || empty($n)) {
+        if (empty($e) || empty($s) || empty($n) && $n != null) {
             $_SESSION['erro_campo_vazio'] = true;
 
             return false;
@@ -51,7 +50,7 @@ class Usuario
         return true;
     }
 
-    public function verificacaoEmailCadastrado($email)
+    private function verificacaoEmailCadastrado($email)
     {
         $bd = new Database();
         $stmt = $bd->realizandoConexao()->prepare("SELECT email FROM usuarios WHERE email = :email");
@@ -99,18 +98,26 @@ class Usuario
         }
     }
 
-    /* 
-    public function loginUsuario()
+     
+    public static function loginUsuario($e, $s)
     {
         $bd = new Database();
-        $querie = "SELECT nome FROM usuarios WHERE email =  :email AND senha = :senha";
+        $querie = "SELECT * FROM usuarios WHERE email =  :email";
         $stmt = $bd->realizandoConexao()->prepare($querie);
-        $stmt->bindParam(":email", $_SESSION['email']);
-        $stmt->bindParam(":senha", $_SESSION['senha']);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            return false;
+        $stmt->bindParam(":email", $e);
+        
+        if ($stmt->execute() && $stmt->rowCount() > 0) {
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            if(password_verify($s,$usuario['senha'])){
+                $_SESSION['usuario'] = [
+                    "id" => $usuario['id'],
+                    "nome" => $usuario['nome'],
+                    "email" => $usuario['email']
+                ];
+                return true;
+            }
         }
-    }*/
+        return false;
+        
+    }
 }

@@ -6,7 +6,7 @@ $homeDisabled = true;
 require_once '../partials/head.php';
 
 //gambiarra temporaria pq o erro de campos vazios estava aparecendo assim q o usuário entrava nessa página
-if (!isset($_GET['erro'])) {
+if (!isset($_GET['erroCadastro'])) {
     unset($_SESSION['erro_campo_vazio']);
 }
 ?>

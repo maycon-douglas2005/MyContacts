@@ -1,21 +1,35 @@
 <?php
-$mostrarMsgSucesso = null;
-if (isset($_GET['sucesso'])) {
-    $mostrarMsgSucesso = true;
+$msgsSucesso = [
+    "cadastro" => null,
+    "login" => null
+];
+if (isset($_GET['sucessoCadastro'])) {
+    $msgsSucesso['cadastro'] = true;
+} elseif(isset($_GET['sucessoLogin'])){
+    $msgsSucesso['login'] = true;
 }
+
+
 require_once '../partials/head.php';
 ?>
 
 
 
 <body>
-
-    <?php if ($mostrarMsgSucesso === true): ?>
+    <!-- Mensagem de boas-vindas pos-cadastro -->
+    <?php if ($msgsSucesso['cadastro'] === true){ ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <button class="btn-close" data-bs-dismiss="alert"></button>
             <p>Cadastro realizado com sucesso!<br>Seja bem-vindo(a)!</p>
         </div>
-    <?php endif ?>
+    <?php } elseif($msgsSucesso['login'] === true){ ?>
+        <div class="alert alert-success alert-dismissible fade show"  role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p>Login realizado com sucesso!<br>Seja bem-vindo(a)!</p>
+        </div>
+
+    <?php } ?>
+    <!-- Mensagem de boas-vindas -->
 
     <h1>Lista De Contatos</h1>
 
