@@ -17,22 +17,18 @@ class AuthController
         $e = $_POST['email'];
         $s = $_POST['password'];
 
-        
+
 
         if (User::loginUsuario($e, $s)) {
             header('Location: ../Views/contacts/listaDeContatos.php?sucessoLogin=true');
             exit;
         }
 
-        if (!isset($_SESSION['erro_campo_vazio'])) {
-                $_SESSION['erro_campo_vazio'] = true;
-            }
         header('Location: ../Views/auth/login.php?erroLogin=true');
         exit;
     }
 }
 
-if($_SERVER['REQUEST_METHOD'] === "POST"){
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     AuthController::login();
 }
-
