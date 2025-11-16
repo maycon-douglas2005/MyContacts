@@ -1,10 +1,6 @@
 <?php
 $baseUrl = '/Projetos de Programação/lista_de_contatos/public/index.php';
 $homeDisabled = true;
-session_start();
-
-
-
 require_once '../partials/head.php';
 ?>
 
@@ -18,7 +14,13 @@ require_once '../partials/head.php';
                 <h2>Login</h2>
                 <?php   ?>
                 <div class="campos d-flex flex-column row g-2">
-                    <?php if (isset($_GET['erroLogin'])):  ?> <p class="alert alert-danger">Preencha todos os campos!</p> <?php endif; ?>
+
+                    <?php
+                    if (isset($_GET['erroCamposVaziosLogin'])):  ?> <p class="alert alert-danger">Preencha todos os campos!</p>
+                    <?php endif;
+                    if (isset($_GET['erroEmail'])): ?> <p class="alert alert-danger">E-mail ou senha inválido!</p>
+                    <?php endif; ?>
+
                     <input type="email" name="email" id="" class="col-auto" placeholder="Email" maxlength="30">
                     <input type="password" name="password" class="col-auto" id="" placeholder="Senha" minlength="6" maxlength="12">
                     <button class="btn btn-success btn-outline-black">Enviar</button>

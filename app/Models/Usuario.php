@@ -2,6 +2,7 @@
 
 namespace PROJETO\Models;
 
+session_start();
 
 use Exception;
 use PROJETO\config\Database;
@@ -33,16 +34,11 @@ class Usuario
         return "Nome: {$this->name} | Email: {$this->email} | Senha: {$this->password}";
     }
 
-    public static function verificacaoCamposPreenchidos($e, $s, $n)
+    public static function verificacaoCamposPreenchidos($e, $s, $n = null)
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        if (isset($_SESSION['erro_campo_vazio'])) {
-            unset($_SESSION['erro_campo_vazio']);
-        }
+
+
         if (empty($e) || empty($s) || empty($n) && $n != null) {
-            $_SESSION['erro_campo_vazio'] = true;
 
             return false;
         }
@@ -98,26 +94,28 @@ class Usuario
         }
     }
 
-     
+
     public static function loginUsuario($e, $s)
     {
         $bd = new Database();
         $querie = "SELECT * FROM usuarios WHERE email =  :email";
         $stmt = $bd->realizandoConexao()->prepare($querie);
         $stmt->bindParam(":email", $e);
-        
+
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-            if(password_verify($s,$usuario['senha'])){
+            if (password_verify($s, $usuario['senha'])) {
+
                 $_SESSION['usuario'] = [
                     "id" => $usuario['id'],
                     "nome" => $usuario['nome'],
                     "email" => $usuario['email']
                 ];
+
                 return true;
             }
+            return false;
         }
         return false;
-        
     }
 }

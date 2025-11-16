@@ -35,9 +35,7 @@ class UsuarioController
                 echo 'Erro: ' . $resultadoCadastrarUsuario;
             }
         } else {
-            if (!isset($_SESSION['erro_campo_vazio'])) {
-                $_SESSION['erro_campo_vazio'] = true;
-            }
+
             header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/auth/cadastro.php?erroCadastro=true');
             exit;
         }

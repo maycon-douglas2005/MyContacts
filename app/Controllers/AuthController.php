@@ -18,13 +18,16 @@ class AuthController
         $s = $_POST['password'];
 
 
+        if (User::verificacaoCamposPreenchidos($e, $s)) {
+            if (User::loginUsuario($e, $s)) {
+                header('Location: ../Views/contacts/listaDeContatos.php?sucessoLogin=true');
+                exit;
+            }
 
-        if (User::loginUsuario($e, $s)) {
-            header('Location: ../Views/contacts/listaDeContatos.php?sucessoLogin=true');
+            header('Location: ../Views/auth/login.php?erroEmail=true');
             exit;
         }
-
-        header('Location: ../Views/auth/login.php?erroLogin=true');
+        header('Location: ../Views/auth/login.php?erroCamposVaziosLogin=true');
         exit;
     }
 }

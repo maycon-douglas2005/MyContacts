@@ -5,10 +5,7 @@ $baseUrl = '/lista_de_contatos/public/index.php';
 $homeDisabled = true;
 require_once '../partials/head.php';
 
-//gambiarra temporaria pq o erro de campos vazios estava aparecendo assim q o usuário entrava nessa página
-if (!isset($_GET['erroCadastro'])) {
-    unset($_SESSION['erro_campo_vazio']);
-}
+
 ?>
 
 <body class="d-flex flex-column vh-100">
@@ -20,7 +17,7 @@ if (!isset($_GET['erroCadastro'])) {
             <form action="http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
                 <h2>Registro</h2>
                 <div class="campos d-flex flex-column row g-2">
-                    <?php if (isset($_SESSION['erro_campo_vazio'])):  ?> <p class="alert alert-danger">Preencha todos os campos!</p> <?php endif; ?>
+                    <?php if (isset($_GET['erroCadastro'])):  ?> <p class="alert alert-danger">Preencha todos os campos!</p> <?php endif; ?>
 
                     <input type="text" name="name" class="col-auto" placeholder="Primeiro Nome">
 
