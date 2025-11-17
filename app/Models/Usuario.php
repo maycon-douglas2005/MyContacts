@@ -16,6 +16,7 @@ class Usuario
     private $password;
 
     public const ERRO_EMAIL_CADASTRADO = 4;
+    public const ERRO_INESPERADO = 5;
 
     public function __construct($email = null, $password = null, $name = null)
     {
@@ -29,10 +30,7 @@ class Usuario
         }
     }
 
-    public function __toString()
-    {
-        return "Nome: {$this->name} | Email: {$this->email} | Senha: {$this->password}";
-    }
+    
 
     public static function verificacaoCamposPreenchidos($e, $s, $n = null)
     {
@@ -80,17 +78,15 @@ class Usuario
                         return false;
                     }
                 } else {
-                    return Usuario::ERRO_EMAIL_CADASTRADO;
+                    return self::ERRO_EMAIL_CADASTRADO;
                 }
             } elseif ($resultadoValidarEmail === 2) {
                 return 2; //ERRO_FORMATO_INVALIDO
             } elseif ($resultadoValidarEmail === 3) {
                 return 3; //ERRO_DOMINIO_INVALIDO
-            } else {
-                return '<h1>Erro não identificado</h1>';
             }
         } catch (Exception $e) {
-            return $e->getMessage();
+            return self::ERRO_INESPERADO;
         }
     }
 

@@ -4,9 +4,9 @@
     </div>
     <nav class="row-6">
         <ul class="col-auto list-unstyled d-flex flex-row">
-            <li class="mx-2 btn"><a href="http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php" class="<?php if ($homeDisabled === true): ?> disabled <?php endif; ?>text-dark text-decoration-none btn btn-outline-secondary">Home</a></li>
-            <li class="mx-2 btn"><a href="http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/auth/cadastro.php" class="text-dark text-decoration-none btn btn-outline-secondary">Cadastro</a></li>
-            <li class="mx-2 btn"><a href="http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/auth/login.php" class="text-dark text-decoration-none btn btn-outline-secondary">Login</a></li>
+            <li class="mx-2 btn"><a href="http://localhost/MyContacts/app/Views/contacts/listaDeContatos.php" class="<?php if ($homeDisabled === true): ?> d-none <?php endif; ?>text-dark text-decoration-none btn btn-outline-secondary">Home</a></li>
+            <li class="mx-2 btn"><a href="http://localhost/MyContacts/app/Views/auth/cadastro.php" class="<?php if ($cadastroDisabled === true): ?> d-none <?php endif; ?> text-dark text-decoration-none btn btn-outline-secondary">Cadastro</a></li>
+            <li class="mx-2 btn"><a href="http://localhost/MyContacts/app/Views/auth/login.php" class="<?php if ($loginDisabled === true): ?> d-none <?php endif; ?> text-dark text-decoration-none btn btn-outline-secondary">Login</a></li>
         </ul>
     </nav>
 </header>

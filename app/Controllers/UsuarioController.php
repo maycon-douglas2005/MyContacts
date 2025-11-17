@@ -18,27 +18,30 @@ class UsuarioController
         if ($resultVerificacaoCamposPreenchidos) {
 
             $Usuario = new User($e, $s, $n);
-            // $_SESSION['Usuario'] = $Usuario;
+            
             $resultadoCadastrarUsuario = $Usuario->cadastrarUsuario();
             if ($resultadoCadastrarUsuario === true) {
 
-                header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/contacts/listaDeContatos.php?sucessoCadastro=true');
+                header('Location: http://localhost/MyContacts/app/Views/contacts/listaDeContatos.php?sucessoCadastro=true');
                 exit;
-            } elseif ($resultadoCadastrarUsuario === 2) {
-                echo "Erro no formato do email ";
+            } elseif ($resultadoCadastrarUsuario === 2) { 
+                header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroFormatoEmail=true');
+                exit;
             } elseif ($resultadoCadastrarUsuario === 3) {
-                echo "Erro no dominio do email";
-            } elseif ($resultadoCadastrarUsuario === 4) {
-                echo "Email já cadastrado";
-            } else {
-
-                echo 'Erro: ' . $resultadoCadastrarUsuario;
+                header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroDominioEmail=true');
+                exit;
+            } elseif ($resultadoCadastrarUsuario === 4) { 
+                header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroEmailCadastrado=true');
+                exit;
+            } elseif($resultadoCadastrarUsuario === 5) {
+                header("Location: http://localhost/MyContacts/app/Views/error/erroInesperado.php");
+                exit;
             }
-        } else {
+        } 
 
-            header('Location: http://localhost/Projetos%20de%20Programação/lista_de_contatos/app/Views/auth/cadastro.php?erroCadastro=true');
+            header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroCamposVaziosCadastro=true');
             exit;
-        }
+        
     }
 }
 
