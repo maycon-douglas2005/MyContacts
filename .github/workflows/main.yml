@@ -20,4 +20,4 @@ jobs:
           username: ezyro_40942532
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /htdocs/
-          local-dir: ./public/
+          local-dir: ./
