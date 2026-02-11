@@ -39,7 +39,7 @@ class UsuarioController
             }
         }
 
-        header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroCamposVaziosCadastro=true');
+        header('Location: ../Views/auth/cadastro.php?erroCamposVaziosCadastro=true');
         exit;
     }
 }
