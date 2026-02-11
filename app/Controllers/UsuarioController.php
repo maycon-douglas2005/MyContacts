@@ -18,30 +18,29 @@ class UsuarioController
         if ($resultVerificacaoCamposPreenchidos) {
 
             $Usuario = new User($e, $s, $n);
-            
+
             $resultadoCadastrarUsuario = $Usuario->cadastrarUsuario();
             if ($resultadoCadastrarUsuario === true) {
 
-                header('Location: http://localhost/MyContacts/app/Views/contacts/listaDeContatos.php?sucessoCadastro=true');
+                header('Location: ../Views/contacts/listaDeContatos.php?sucessoCadastro=true');
                 exit;
-            } elseif ($resultadoCadastrarUsuario === 2) { 
-                header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroFormatoEmail=true');
+            } elseif ($resultadoCadastrarUsuario === 2) {
+                header('Location: ../Views/auth/cadastro.php?erroFormatoEmail=true');
                 exit;
             } elseif ($resultadoCadastrarUsuario === 3) {
-                header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroDominioEmail=true');
+                header('Location: ../Views/auth/cadastro.php?erroDominioEmail=true');
                 exit;
-            } elseif ($resultadoCadastrarUsuario === 4) { 
-                header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroEmailCadastrado=true');
+            } elseif ($resultadoCadastrarUsuario === 4) {
+                header('Location: ../Views/auth/cadastro.php?erroEmailCadastrado=true');
                 exit;
-            } elseif($resultadoCadastrarUsuario === 5) {
-                header("Location: http://localhost/MyContacts/app/Views/error/erroInesperado.php");
+            } elseif ($resultadoCadastrarUsuario === 5) {
+                header("Location: ../Views/error/erroInesperado.php");
                 exit;
             }
-        } 
+        }
 
-            header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroCamposVaziosCadastro=true');
-            exit;
-        
+        header('Location: http://localhost/MyContacts/app/Views/auth/cadastro.php?erroCamposVaziosCadastro=true');
+        exit;
     }
 }
 

@@ -30,7 +30,7 @@ class Usuario
         }
     }
 
-    
+
 
     public static function verificacaoCamposPreenchidos($e, $s, $n = null)
     {
@@ -59,11 +59,11 @@ class Usuario
     public function cadastrarUsuario()
     {
         $resultadoValidarEmail = Email::validarEmail($this->email);
-        $resultadoEmailCadastro = $this->verificacaoEmailCadastrado($this->email);
+        $resultadoEmailCadastrado = $this->verificacaoEmailCadastrado($this->email);
 
         try {
             if ($resultadoValidarEmail === true) {
-                if ($resultadoEmailCadastro === false) {
+                if ($resultadoEmailCadastrado === false) {
                     $bd = new Database();
 
                     $querie = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";

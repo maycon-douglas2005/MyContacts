@@ -7,6 +7,8 @@ if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['cadastro'] = true;
 } elseif (isset($_GET['sucessoLogin'])) {
     $msgsSucesso['login'] = true;
+} else {
+    header('Location: ../auth/cadastro.php?userDeslogado=true');
 }
 
 

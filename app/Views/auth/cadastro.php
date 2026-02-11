@@ -5,7 +5,6 @@ $baseUrl = '/lista_de_contatos/public/index.php';
 $homeDisabled = true;
 require_once '../partials/head.php';
 
-
 ?>
 
 <body class="d-flex flex-column vh-100">
@@ -14,7 +13,8 @@ require_once '../partials/head.php';
 
     <main class="container-fluid d-flex flex-fill ">
         <div class="row vw-100 d-flex flex-row justify-content-center">
-            <form action="../app/Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
+            <form action="../../Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
+                <div class="alert alert-warning <?= isset($_GET['userDeslogado']) ? "d-flex" : "d-none" ?>">Você precisa estar logado antes de acessar a sua lista de contatos!</div>
                 <h2>Registro</h2>
                 <div class="campos d-flex flex-column row g-2">
 
