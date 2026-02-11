@@ -14,23 +14,23 @@ require_once '../partials/head.php';
 
     <main class="container-fluid d-flex flex-fill ">
         <div class="row vw-100 d-flex flex-row justify-content-center">
-            <form action="http://localhost/MyContacts/app/Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
+            <form action="../app/Controllers/UsuarioController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
                 <h2>Registro</h2>
                 <div class="campos d-flex flex-column row g-2">
 
-                    <?php 
-                    if (isset($_GET['erroCamposVaziosCadastro'])):  ?> 
-                        <p class="alert alert-danger">Preencha todos os campos!</p> 
-                    <?php endif; ?>
-                    
                     <?php
-                    if(isset($_GET['erroFormatoEmail'])):?> 
-                        <p class="alert alert-danger">Formato de email inválido!</p> 
+                    if (isset($_GET['erroCamposVaziosCadastro'])):  ?>
+                        <p class="alert alert-danger">Preencha todos os campos!</p>
                     <?php endif; ?>
-                    
+
                     <?php
-                    if(isset($_GET['erroEmailCadastrado'])): ?> 
-                        <p class="alert alert-danger">Este email já está cadastrado. Por favor, escolha outro email.</p> 
+                    if (isset($_GET['erroFormatoEmail'])): ?>
+                        <p class="alert alert-danger">Formato de email inválido!</p>
+                    <?php endif; ?>
+
+                    <?php
+                    if (isset($_GET['erroEmailCadastrado'])): ?>
+                        <p class="alert alert-danger">Este email já está cadastrado. Por favor, escolha outro email.</p>
                     <?php endif; ?>
 
                     <input type="text" name="name" class="col-auto" placeholder="Primeiro Nome">

@@ -1,6 +1,5 @@
 <?php
-$baseUrl = '/Projetos%20de%20Programação/lista_de_contatos/public/index.php';
-$homeDisabled = true;
+$arquivoUrl = true;
 require_once '../app/Views/partials/head.php';
 ?>
 
@@ -23,7 +22,7 @@ require_once '../app/Views/partials/head.php';
 
             </section>
 
-            <img src=" images/home_site.png" class="img-fluid col-5 shadow" alt="">
+            <img src="../public/images/home_site.png" class="img-fluid col-5 shadow" alt="">
         </div>
     </main>
 
