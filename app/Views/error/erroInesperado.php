@@ -8,7 +8,8 @@ require_once '../partials/head.php';
         <div class="divErro alert alert-danger">
             <h2>ERRO FATAL</h2>
             <hr>
-            <p>Um erro não identificado aconteceu, por favor tente novamente mais tarde.</p>
+            <p>Um erro não esperado aconteceu, por favor tente novamente mais tarde.</p>
+            
         </div>
 
         <a href="../../../public/index.php" class="btn btn-success">Voltar</a>

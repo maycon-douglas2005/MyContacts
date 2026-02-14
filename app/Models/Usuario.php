@@ -86,6 +86,7 @@ class Usuario
                 return 3; //ERRO_DOMINIO_INVALIDO
             }
         } catch (Exception $e) {
+            
             return self::ERRO_INESPERADO;
         }
     }
