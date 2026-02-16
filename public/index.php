@@ -1,6 +1,8 @@
 <?php
 $arquivoUrl = true;
 require_once '../app/Views/partials/head.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
 ?>
 
 
