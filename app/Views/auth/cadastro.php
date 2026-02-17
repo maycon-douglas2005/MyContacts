@@ -33,9 +33,9 @@ require_once '../partials/head.php';
                         <p class="alert alert-danger">Este email já está cadastrado. Por favor, escolha outro email.</p>
                     <?php endif; ?>
 
-                    <input type="text" name="name" class="col-auto" placeholder="Primeiro Nome">
-                    <input type="email" name="email" class="col-auto" placeholder="Email">
-                    <input type="password" name="password" class="col-auto" placeholder="Senha" minlength="4">
+                    <input type="text" name="name" class="col-auto" placeholder="Primeiro Nome" maxlength="100">
+                    <input type="email" name="email" class="col-auto" placeholder="Email" maxlength="100">
+                    <input type="password" name="password" class="col-auto" placeholder="Senha" maxlength="100">
 
                     <button class="btn btn-success btn-outline-black">Enviar</button>
                 </div>

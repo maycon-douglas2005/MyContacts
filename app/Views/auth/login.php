@@ -21,8 +21,8 @@ require_once '../partials/head.php';
                     if (isset($_GET['erroEmail'])): ?> <p class="alert alert-danger">E-mail ou senha inválido!</p>
                     <?php endif; ?>
 
-                    <input type="email" name="email" id="" class="col-auto" placeholder="Email" maxlength="30">
-                    <input type="password" name="password" class="col-auto" id="" placeholder="Senha" minlength="6" maxlength="12">
+                    <input type="email" name="email" id="" class="col-auto" placeholder="Email" maxlength="100">
+                    <input type="password" name="password" class="col-auto" id="" placeholder="Senha"  maxlength="100">
                     <button class="btn btn-success btn-outline-black">Enviar</button>
                 </div>
 
