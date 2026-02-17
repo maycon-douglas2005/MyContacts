@@ -7,10 +7,10 @@ use PDOException;
 
 class Database
 {
-    private $database = 'lista_de_contatos';
-    private $username = 'root';
-    private $password = '';
-    private $host = 'localhost';
+    private $database = 'ezyro_40942532_lista_de_contatos';
+    private $username = 'ezyro_40942532';
+    private $password = '4d0a6f1218c6';
+    private $host = 'sql100.ezyro.com';
 
     public function realizandoConexao()
     {
