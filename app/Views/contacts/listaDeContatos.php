@@ -4,7 +4,10 @@ namespace PROJETO\Views;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
+
 use PROJETO\Controllers\ContatoController as ListContacts;
+
+// VERIFICANDO SE USUÁRIO ESTÁ LOGADO
 
 $msgsSucesso = [
     "cadastro" => null,
@@ -14,8 +17,6 @@ if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['cadastro'] = true;
 } elseif (isset($_GET['sucessoLogin'])) {
     $msgsSucesso['login'] = true;
-} else {
-    header('Location: ../auth/cadastro.php?userDeslogado=true');
 }
 
 
@@ -36,13 +37,17 @@ require_once '../partials/head.php';
             <button class="btn-close" data-bs-dismiss="alert"></button>
             <p>Cadastro realizado com sucesso!<br>Seja bem-vindo(a)!</p>
         </div>
-    <?php } elseif ($msgsSucesso['login'] === true) { ?>
+    <?php
+        $msgsSucesso['cadastro'] = false; //reset
+    } elseif ($msgsSucesso['login'] === true) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <button class="btn-close" data-bs-dismiss="alert"></button>
             <p>Login realizado com sucesso!<br>Seja bem-vindo(a)!</p>
         </div>
 
-    <?php } ?>
+    <?php
+        $msgsSucesso['login'] = false; //reset
+    } ?>
 
 
 
@@ -52,7 +57,12 @@ require_once '../partials/head.php';
         <section class="shadow-md row d-flex flex-column">
             <div class="d-flex flex-row col-auto justify-content-around">
                 <h1 class="m-0 col-auto">Lista De Contatos</h1>
-                <button class="btn btn-primary col-auto" id="addContact">Adicionar Contato</button>
+                <div class="btns d-flex flex-row">
+                    <button class="mx-1 btn btn-primary col-auto" id="addContact">Adicionar</button>
+                    <button class="mx-1 btn btn-secondary col-auto" id="editContact">Editar</button>
+                    <button class="mx-1 btn btn-danger col-auto" id="deleteContact">Excluir</button>
+                </div>
+
             </div>
 
             <table class="col-12 shadow-lg mt-2">
@@ -61,7 +71,7 @@ require_once '../partials/head.php';
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Celular</th>
-                        <th>Ação</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -72,8 +82,13 @@ require_once '../partials/head.php';
     </main>
 
 
-    <?php require_once '../partials/footer.php' ?>
+    <?php require_once '../partials/footer.php';
+    if (!isset($_SESSION['usuario']['id'])) {
+        header('Location: ../auth/cadastro.php');
+    }
+    ?>
     <script src="../../../public/js/formAddContact.js"></script>
+    <script src="../../../public/js/btnEditContact.js"></script>
 </body>
 
 </html>

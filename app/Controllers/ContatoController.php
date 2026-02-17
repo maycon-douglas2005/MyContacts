@@ -25,21 +25,21 @@ class ContatoController
                 if (Email::validarEmail($e)) {
                     $Contato = new Contatos($n, $e, $c);
                     if ($Contato->save()) {
-                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=true?sucessoLogin=true');
+                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=true?');
                     } else {
-                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=false?sucessoLogin=true');
+                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=false?');
                     }
                 } elseif (Email::validarEmail($e) === 2) {
-                    header('Location: ../Views/contacts/listaDeContatos.php?formatoEmailIncorreto=true?sucessoLogin=true');
+                    header('Location: ../Views/contacts/listaDeContatos.php?formatoEmailIncorreto=true?');
                 } elseif (Email::validarEmail($e) === 3) {
-                    header('Location: ../Views/contacts/listaDeContatos.php?dominioEmailIncorreto=true?sucessoLogin=true');
+                    header('Location: ../Views/contacts/listaDeContatos.php?dominioEmailIncorreto=true?');
                 }
             } else {
-                header('Location: ../Views/contacts/listaDeContatos.php?emailContatoCadastrado=true?sucessoLogin=true');
+                header('Location: ../Views/contacts/listaDeContatos.php?emailContatoCadastrado=true?');
             }
         } else {
 
-            header('Location: ../Views/contacts/listaDeContatos.php?campoVazioAddContact=true?sucessoLogin=true');
+            header('Location: ../Views/contacts/listaDeContatos.php?campoVazioAddContact=true?');
         }
     }
 
@@ -48,10 +48,10 @@ class ContatoController
         $ListaContatos = Contatos::getAll();
         foreach ($ListaContatos as $linhaListaContatos) { ?>
             <tr class="justify-content-around d-flex">
-                <td><?php echo $linhaListaContatos['nome'] ?></td>
-                <td><?php echo $linhaListaContatos['email'] ?></td>
-                <td><?php echo $linhaListaContatos['celular'] ?></td>
-                <td>Nenhum ação</td>
+                <td class="d-flex justify-content-center"><input type="text" readonly class="form-control-plaintext" value="<?php echo $linhaListaContatos['nome'] ?>"></td>
+                <td class="d-flex justify-content-center"><input type="text" readonly class="form-control-plaintext" value="<?php echo $linhaListaContatos['email'] ?>"></td>
+                <td class="d-flex justify-content-center"><input type="text" readonly class="form-control-plaintext" value="<?php echo $linhaListaContatos['celular'] ?>"></td>
+
             </tr>
 <?php
         }
