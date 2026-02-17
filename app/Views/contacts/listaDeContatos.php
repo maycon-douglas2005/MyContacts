@@ -1,18 +1,25 @@
 <?php
-    $msgsSucesso = [
-        "cadastro" => null,
-        "login" => null
-    ];
-    if (isset($_GET['sucessoCadastro'])) {
-        $msgsSucesso['cadastro'] = true;
-    } elseif (isset($_GET['sucessoLogin'])) {
-        $msgsSucesso['login'] = true;
-    } else {
-        header('Location: ../auth/cadastro.php?userDeslogado=true');
-    }
+
+namespace PROJETO\Views;
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+use PROJETO\Controllers\ContatoController as ListContacts;
+
+$msgsSucesso = [
+    "cadastro" => null,
+    "login" => null
+];
+if (isset($_GET['sucessoCadastro'])) {
+    $msgsSucesso['cadastro'] = true;
+} elseif (isset($_GET['sucessoLogin'])) {
+    $msgsSucesso['login'] = true;
+} else {
+    header('Location: ../auth/cadastro.php?userDeslogado=true');
+}
 
 
-    require_once '../partials/head.php';
+require_once '../partials/head.php';
 ?>
 
 
@@ -25,15 +32,15 @@
 
     <!-- Mensagem de boas-vindas pos-cadastro -->
     <?php if ($msgsSucesso['cadastro'] === true) { ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button class="btn-close" data-bs-dismiss="alert"></button>
-        <p>Cadastro realizado com sucesso!<br>Seja bem-vindo(a)!</p>
-    </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p>Cadastro realizado com sucesso!<br>Seja bem-vindo(a)!</p>
+        </div>
     <?php } elseif ($msgsSucesso['login'] === true) { ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <button class="btn-close" data-bs-dismiss="alert"></button>
-        <p>Login realizado com sucesso!<br>Seja bem-vindo(a)!</p>
-    </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p>Login realizado com sucesso!<br>Seja bem-vindo(a)!</p>
+        </div>
 
     <?php } ?>
 
@@ -58,7 +65,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr></tr>
+                    <?php echo ListContacts::index() ?>
                 </tbody>
             </table>
         </section>

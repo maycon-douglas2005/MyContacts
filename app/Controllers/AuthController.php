@@ -20,6 +20,8 @@ class AuthController
 
         if (User::verificacaoCamposPreenchidos($e, $s)) {
             if (User::loginUsuario($e, $s)) {
+
+
                 header('Location: ../Views/contacts/listaDeContatos.php?sucessoLogin=true');
                 exit;
             }

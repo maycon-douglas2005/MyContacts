@@ -2,6 +2,8 @@
 
 namespace PROJETO\Helpers;
 
+use PROJETO\config\Database as Db;
+
 class EmailHelper
 {
     public const ERRO_FORMATO_INVALIDO = 2;
@@ -15,5 +17,17 @@ class EmailHelper
         $dominio = substr(strchr($email, "@"), 1);
 
         return checkdnsrr($dominio, "MX") ? true : self::ERRO_DOMINIO_INVALIDO;
+    }
+
+    public static function verificacaoEmailCadastrado($email)
+    {
+        $bd = new Db();
+        $stmt = $bd->realizandoConexao()->prepare("SELECT email FROM contatos_usuarios WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        if ($stmt->rowCount() == 0) {
+            return false;
+        }
+        return true;
     }
 }

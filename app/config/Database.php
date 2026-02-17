@@ -7,7 +7,7 @@ use PDOException;
 
 class Database
 {
-    private $database = 'mycontacts';
+    private $database = 'lista_de_contatos';
     private $username = 'root';
     private $password = '';
     private $host = 'localhost';
