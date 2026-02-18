@@ -57,7 +57,7 @@ require_once '../partials/head.php';
         <section class="shadow-md row d-flex flex-column">
             <div class="d-flex flex-row col-auto justify-content-around">
                 <h1 class="m-0 col-auto">Lista De Contatos</h1>
-                <div class="btns d-flex flex-row">
+                <div id="btnsTable" class="btns d-flex flex-row">
                     <button class="mx-1 btn btn-primary col-auto" id="addContact">Adicionar</button>
                     <button class="mx-1 btn btn-secondary col-auto" id="editContact">Editar</button>
                     <button class="mx-1 btn btn-danger col-auto" id="deleteContact">Excluir</button>
