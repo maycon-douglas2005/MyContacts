@@ -46,4 +46,19 @@ class Contatos
         $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dados;
     }
+    public static function updateMultiple($d) {
+        $idContato = $d['registros']['id'];
+        $nomeContato = $d['registros']['nome'];
+
+        $bd = new Db;
+        $stmt = $bd->realizandoConexao()->prepare("INSERT INTO contatos_usuarios (nome) VALUES (:nome) WHERE id = :id_contato");
+        $stmt->bindValue(":nome", $nomeContato);
+        $stmt->bindValue(":id_contato", $idContato);
+
+        if($stmt->execute()){
+            return true;
+        } else {
+            return false;   
+        }
+    }
 }

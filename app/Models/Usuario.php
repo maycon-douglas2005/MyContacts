@@ -87,7 +87,8 @@ class Usuario
             }
         } catch (Exception $e) {
             
-            return self::ERRO_INESPERADO;
+           // return self::ERRO_INESPERADO;
+           return $e;
         }
     }
 

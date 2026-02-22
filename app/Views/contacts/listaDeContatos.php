@@ -11,12 +11,17 @@ use PROJETO\Controllers\ContatoController as ListContacts;
 
 $msgsSucesso = [
     "cadastro" => null,
-    "login" => null
+    "login" => null,
+    "updateContato" => null
 ];
 if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['cadastro'] = true;
 } elseif (isset($_GET['sucessoLogin'])) {
     $msgsSucesso['login'] = true;
+} elseif (isset($_GET['alteracaoContato']) && $_GET['alteracaoContato'] === true) {
+    $msgsSucesso['updateContato'] = true;
+} elseif (isset($_GET['alteracaoContato']) && $_GET['alteracaoContato'] === false) {
+    $msgsSucesso['updateContato'] = false;
 }
 
 
@@ -38,7 +43,7 @@ require_once '../partials/head.php';
             <p>Cadastro realizado com sucesso!<br>Seja bem-vindo(a)!</p>
         </div>
     <?php
-        $msgsSucesso['cadastro'] = false; //reset
+        $msgsSucesso['cadastro'] = null; //reset
     } elseif ($msgsSucesso['login'] === true) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <button class="btn-close" data-bs-dismiss="alert"></button>
@@ -46,8 +51,16 @@ require_once '../partials/head.php';
         </div>
 
     <?php
-        $msgsSucesso['login'] = false; //reset
-    } ?>
+        $msgsSucesso['login'] = null; //reset
+    } elseif (empty($msgsSucesso['updateContato']) &&  $msgsSucesso['updateContato'] !== null) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alrt">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p> <?php
+                if ($msgsSucesso['updateContato'] === true) { ?>Alterações realizadas com sucesso! <?php } elseif ($msgsSucesso['updateContato'] === false) { ?> Falha ao atualizar dados do contato! <?php } ?>
+            </p>
+        </div>
+    <?php } ?>
+
 
 
 
@@ -89,6 +102,7 @@ require_once '../partials/head.php';
     ?>
     <script src="../../../public/js/formAddContact.js"></script>
     <script src="../../../public/js/btnEditContact.js"></script>
+    <script src="../../../public/js/btnSalvarAlteracoes.js"></script>
 </body>
 
 </html>

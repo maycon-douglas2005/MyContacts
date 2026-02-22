@@ -7,6 +7,7 @@ const btnConcluiEdicao = document.createElement("button");
 const contentBtnConclui = document.createTextNode("Salvar Alterações");
 btnConcluiEdicao.appendChild(contentBtnConclui);
 btnConcluiEdicao.classList.add("btn", "btn-success", "col-auto", "mx-1");
+btnConcluiEdicao.setAttribute("id", "save");
 
 // construindo botao Cancelar Alterações
 const btnCancelarEdicao = document.createElement("button");
