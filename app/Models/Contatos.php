@@ -5,6 +5,7 @@ namespace PROJETO\Models;
 require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 
+use LengthException;
 use PROJETO\config\Database as Db;
 use PROJETO\Helpers\EmailHelper;
 use PDO;
@@ -45,5 +46,46 @@ class Contatos
         $stmt->execute();
         $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dados;
+    }
+
+
+    public static function updateMultiple($d)
+    {
+        $bd = new Db;
+
+        foreach ($d['registros'] as $registro) {
+
+            $campos = [];
+            $valores = [];
+
+            if (isset($registro['nome'])) {
+                $campos[] = "nome = :nome";
+                $valores[':nome'] = $registro['nome'];
+            }
+
+            if (isset($registro['email'])) {
+                $campos[] = "email = :email";
+                $valores[':email'] = $registro['email'];
+            }
+
+            if (isset($registro['celular'])) {
+                $campos[] = "celular = :celular";
+                $valores[':celular'] = $registro['celular'];
+            }
+
+            if (empty($campos)) {
+                continue;
+            }
+
+            $sql = "UPDATE contatos_usuarios SET " . implode(", ", $campos) . " WHERE id = :id";
+
+            $stmt = $bd->realizandoConexao()->prepare($sql);
+
+            $valores[':id'] = $registro['id'];
+
+            $stmt->execute($valores);
+        }
+
+        return true;
     }
 }

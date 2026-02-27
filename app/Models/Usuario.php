@@ -87,10 +87,18 @@ class Usuario
             }
         } catch (Exception $e) {
             
-            return self::ERRO_INESPERADO;
+           // return self::ERRO_INESPERADO;
+           return $e;
         }
     }
 
+    public function getId($email){
+        $db = new Database;
+        $stmt = $db->realizandoConexao()->prepare("SELECT id FROM usuarios WHERE email = :email");
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
+        return $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
     public static function loginUsuario($e, $s)
     {

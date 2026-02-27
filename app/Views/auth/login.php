@@ -2,6 +2,7 @@
 $baseUrl = '/Projetos de Programação/lista_de_contatos/public/index.php';
 $homeDisabled = true;
 require_once '../partials/head.php';
+session_start();
 ?>
 
 <body class="d-flex flex-column vh-100">
@@ -12,6 +13,7 @@ require_once '../partials/head.php';
         <div class="row vw-100 d-flex flex-row justify-content-center">
             <form action="../../Controllers/AuthController.php" method="POST" class="col-4 shadow-lg mb-2 d-flex flex-column justify-content-center align-items-center">
                 <h2>Login</h2>
+
                 <?php   ?>
                 <div class="campos d-flex flex-column row g-2">
 
@@ -22,7 +24,7 @@ require_once '../partials/head.php';
                     <?php endif; ?>
 
                     <input type="email" name="email" id="" class="col-auto" placeholder="Email" maxlength="100">
-                    <input type="password" name="password" class="col-auto" id="" placeholder="Senha"  maxlength="100">
+                    <input type="password" name="password" class="col-auto" id="" placeholder="Senha" maxlength="100">
                     <button class="btn btn-success btn-outline-black">Enviar</button>
                 </div>
 

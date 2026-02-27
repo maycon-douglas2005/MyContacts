@@ -21,7 +21,12 @@ class UsuarioController
 
             $resultadoCadastrarUsuario = $Usuario->cadastrarUsuario();
             if ($resultadoCadastrarUsuario === true) {
-
+                $idUsuario = $Usuario->getId($e);
+                $_SESSION['usuario'] = [
+                    'id' => $idUsuario['id'],
+                    'nome' => $n,
+                    'email' => $e
+                ];
                 header('Location: ../Views/contacts/listaDeContatos.php?sucessoCadastro=true');
                 exit;
             } elseif ($resultadoCadastrarUsuario === 2) {
