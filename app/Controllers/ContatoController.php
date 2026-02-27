@@ -13,15 +13,19 @@ use PROJETO\Helpers\EmailHelper as Email;
 
 class ContatoController
 {
-    public static function update($d){
-        
-        if(Contatos::updateMultiple($d)){
-            header('Location: ../Views/listaDeContatos.php?alteracaoContato=true');
-            exit;
+    public static function update($d)
+    {
+        header('Content-Type: application/json');
+        if (Contatos::updateMultiple($d)) {
+            echo json_encode([
+                "status" => "success"
+            ]);
         } else {
-            header('Location: ../Views/listaDeContatos.php?alteracaoContato=false');
-            exit;
+            echo json_encode([
+                "status" => "error"
+            ]);
         }
+        exit;
     }
 
     public static function store()
@@ -37,26 +41,26 @@ class ContatoController
                 if (Email::validarEmail($e)) {
                     $Contato = new Contatos($n, $e, $c);
                     if ($Contato->save()) {
-                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=true?');
+                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=true');
                         exit;
                     } else {
-                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=false?');
+                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=false');
                         exit;
                     }
                 } elseif (Email::validarEmail($e) === 2) {
-                    header('Location: ../Views/contacts/listaDeContatos.php?formatoEmailIncorreto=true?');
+                    header('Location: ../Views/contacts/listaDeContatos.php?formatoEmailIncorreto=true');
                     exit;
                 } elseif (Email::validarEmail($e) === 3) {
-                    header('Location: ../Views/contacts/listaDeContatos.php?dominioEmailIncorreto=true?');
+                    header('Location: ../Views/contacts/listaDeContatos.php?dominioEmailIncorreto=true');
                     exit;
                 }
             } else {
-                header('Location: ../Views/contacts/listaDeContatos.php?emailContatoCadastrado=true?');
+                header('Location: ../Views/contacts/listaDeContatos.php?emailContatoCadastrado=true');
                 exit;
             }
         } else {
 
-            header('Location: ../Views/contacts/listaDeContatos.php?campoVazioAddContact=true?');
+            header('Location: ../Views/contacts/listaDeContatos.php?campoVazioAddContact=true');
             exit;
         }
     }
@@ -66,9 +70,9 @@ class ContatoController
         $ListaContatos = Contatos::getAll();
         foreach ($ListaContatos as $linhaListaContatos) { ?>
             <tr class="justify-content-around d-flex">
-                <td class="d-flex justify-content-center"><input data-original="<?php echo $linhaListaContatos['nome'] ?>" data-id="<?php echo $linhaListaContatos['id']?>" type="text" readonly class="form-control-plaintext campo_nome" value="<?php echo $linhaListaContatos['nome'] ?>"></td>
-                <td class="d-flex justify-content-center"><input type="text" readonly class="form-control-plaintext" value="<?php echo $linhaListaContatos['email'] ?>"></td>
-                <td class="d-flex justify-content-center"><input type="text" readonly class="form-control-plaintext" value="<?php echo $linhaListaContatos['celular'] ?>"></td>
+                <td class="d-flex justify-content-center"><input data-original="<?php echo $linhaListaContatos['nome'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext campo_nome" value="<?php echo $linhaListaContatos['nome'] ?>"></td>
+                <td class="d-flex justify-content-center"><input data-original="<?php echo $linhaListaContatos['email'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext campo_email" value="<?php echo $linhaListaContatos['email'] ?>"></td>
+                <td class="d-flex justify-content-center"><input data-original="<?php echo $linhaListaContatos['celular'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext campo_celular" value="<?php echo $linhaListaContatos['celular'] ?>"></td>
 
             </tr>
 <?php
@@ -77,11 +81,10 @@ class ContatoController
 }
 
 
-$data = json_decode(file_get_contents("php://input"),true);
+$data = json_decode(file_get_contents("php://input"), true);
 
-if($_SERVER['REQUEST_METHOD'] === "POST" && isset($data['action']) && $data['action'] === "update"){
+if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($data['action']) && $data['action'] === "update") {
     ContatoController::update($data);
-}
-elseif ($_SERVER['REQUEST_METHOD'] === "POST") {
+} elseif ($_SERVER['REQUEST_METHOD'] === "POST") {
     ContatoController::store();
 }

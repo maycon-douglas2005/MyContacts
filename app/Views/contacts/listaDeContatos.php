@@ -18,10 +18,8 @@ if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['cadastro'] = true;
 } elseif (isset($_GET['sucessoLogin'])) {
     $msgsSucesso['login'] = true;
-} elseif (isset($_GET['alteracaoContato']) && $_GET['alteracaoContato'] === true) {
+} elseif (isset($_GET['alteracaoContato'])) {
     $msgsSucesso['updateContato'] = true;
-} elseif (isset($_GET['alteracaoContato']) && $_GET['alteracaoContato'] === false) {
-    $msgsSucesso['updateContato'] = false;
 }
 
 
@@ -52,12 +50,14 @@ require_once '../partials/head.php';
 
     <?php
         $msgsSucesso['login'] = null; //reset
-    } elseif (empty($msgsSucesso['updateContato']) &&  $msgsSucesso['updateContato'] !== null) { ?>
-        <div class="alert alert-success alert-dismissible fade show" role="alrt">
+
+
+        // status de update de contato(s)
+    } elseif ($msgsSucesso['updateContato'] === true) { ?>
+        <div class="alert alert-success alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
             <button class="btn-close" data-bs-dismiss="alert"></button>
-            <p> <?php
-                if ($msgsSucesso['updateContato'] === true) { ?>Alterações realizadas com sucesso! <?php } elseif ($msgsSucesso['updateContato'] === false) { ?> Falha ao atualizar dados do contato! <?php } ?>
-            </p>
+            <p class="p-0 m-0">Alterações realizadas com sucesso!</p>
+
         </div>
     <?php } ?>
 
