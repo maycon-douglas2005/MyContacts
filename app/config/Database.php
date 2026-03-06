@@ -8,9 +8,9 @@ use PDOException;
 class Database
 {
     private $database = 'ezyro_40942532_lista_de_contatos';
-    private $username = 'rezyro_40942532t';
-    private $password = '4d0a6f1218c6';
-    private $host = 'sql100.ezyro.com';
+    private $username = 'rezyro_40942532t'; 
+    private $password = '4d0a6f1218c6'; 
+    private $host = 'sql100.ezyro.com'; 
 
     public function realizandoConexao()
     {
