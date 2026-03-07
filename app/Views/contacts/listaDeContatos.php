@@ -71,9 +71,9 @@ require_once '../partials/head.php';
             <div class="d-flex flex-row col-auto justify-content-around">
                 <h1 class="m-0 col-auto">Lista De Contatos</h1>
                 <div id="btnsTable" class="btns d-flex flex-row">
-                    <button class="mx-1 btn btn-primary col-auto" id="addContact">Adicionar</button>
-                    <button class="mx-1 btn btn-secondary col-auto" id="editContact">Editar</button>
-                    <button class="mx-1 btn btn-danger col-auto" id="deleteContact">Excluir</button>
+                    <button class="mx-1 btn btn-primary col-auto align-self-center" id="addContact">Adicionar</button>
+                    <button class="mx-1 btn btn-secondary col-auto align-self-center" id="editContact">Editar</button>
+                    <button class="mx-1 btn btn-danger col-auto align-self-center" id="deleteContact">Excluir</button>
                 </div>
 
             </div>
@@ -87,7 +87,7 @@ require_once '../partials/head.php';
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     <?php echo ListContacts::index() ?>
                 </tbody>
             </table>
@@ -100,9 +100,11 @@ require_once '../partials/head.php';
         header('Location: ../auth/cadastro.php');
     }
     ?>
+
     <script src="../../../public/js/formAddContact.js"></script>
     <script src="../../../public/js/btnEditContact.js"></script>
     <script src="../../../public/js/btnSalvarAlteracoes.js"></script>
+    <script src="../../../public/js/btnDelContact.js"></script>
 </body>
 
 </html>
