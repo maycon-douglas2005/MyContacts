@@ -78,13 +78,40 @@ class ContatoController
 <?php
         }
     }
+
+    public static function delete($dados){
+        Contatos::deleteMultiple($dados);
+            
+
+    }
 }
 
-
+// ALTERAÇÃO DE CONTATOS
 $data = json_decode(file_get_contents("php://input"), true);
 
+
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($data['action']) && $data['action'] === "update") {
+    ContatoController::update($data);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["contatosSelecionados"])) {
+    $contatos = json_decode($_POST["contatosSelecionados"], true);
+    ContatoController::delete($contatos);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['nome'])) {
+    ContatoController::store();
+}
+/*if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($data['action']) && $data['action'] === "update") {
     ContatoController::update($data);
 } elseif ($_SERVER['REQUEST_METHOD'] === "POST") {
     ContatoController::store();
 }
+
+
+//EXCLUSÃO DE CONTATOS
+$contatos = json_decode($_POST["contatosSelecionados"] ?? "[]", true);
+if(!empty($contatos)){
+    ContatoController::delete($contatos);
+}
+    */

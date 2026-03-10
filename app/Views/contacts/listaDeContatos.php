@@ -12,7 +12,8 @@ use PROJETO\Controllers\ContatoController as ListContacts;
 $msgsSucesso = [
     "cadastro" => null,
     "login" => null,
-    "updateContato" => null
+    "updateContato" => null,
+    "sucDelCont" => null
 ];
 if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['cadastro'] = true;
@@ -20,6 +21,8 @@ if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['login'] = true;
 } elseif (isset($_GET['alteracaoContato'])) {
     $msgsSucesso['updateContato'] = true;
+} elseif(isset($_GET['sucDelCont'])){
+    $msgsSucesso['sucDelCont'] = true;
 }
 
 
@@ -60,6 +63,16 @@ require_once '../partials/head.php';
 
         </div>
     <?php } ?>
+
+        <?php
+        if($msgsSucesso['sucDelCont'] === true){ ?>
+            <div class="alert alert-success alert-dismissible fade show w-25 position-absolute"  style="left:37%;top: 5%;" role="alert">
+                <button class="btn-close" data-bs-dismiss="alert"></button>
+                <p class="p-0 m-0">Contato(s) excluidos com sucesso!</p>
+            </div>
+       <?php }
+       $msgsSucesso['sucDelCont'] = null;
+       ?>
 
 
 

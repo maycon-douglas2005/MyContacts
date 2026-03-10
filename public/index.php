@@ -25,6 +25,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
             </section>
 
             <img src="../public/images/home_site.png" class="img-fluid col-5 shadow" alt="">
+            
         </div>
     </main>
 
