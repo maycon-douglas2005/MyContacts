@@ -1,8 +1,14 @@
 <?php
 namespace PROJETO\Models;
 
-    require_once __DIR__ . '/../../vendor/autoload.php';
+
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+
+
 
     use LengthException;
     use PROJETO\config\Database as Db;

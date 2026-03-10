@@ -80,9 +80,9 @@ require_once '../partials/head.php';
 
     <!-- Corpo da página -->
     <main class="container ">
-        <section class="shadow-md row d-flex flex-column">
+        <section class="row d-flex flex-column  p-5 ">
             <div class="d-flex flex-row col-auto justify-content-around">
-                <h1 class="m-0 col-auto">Lista De Contatos</h1>
+                <h1 id="TituloListaDeContatos" class="m-0 col-auto ">Lista De Contatos</h1>
                 <div id="btnsTable" class="btns d-flex flex-row">
                     <button class="mx-1 btn btn-primary col-auto align-self-center" id="addContact">Adicionar</button>
                     <button class="mx-1 btn btn-secondary col-auto align-self-center" id="editContact">Editar</button>
@@ -91,7 +91,7 @@ require_once '../partials/head.php';
 
             </div>
 
-            <table class="col-12 shadow-lg mt-2">
+            <table class="col-12 shadow-lg mt-2 ">
                 <thead>
                     <tr class="justify-content-around d-flex">
                         <th>Nome</th>
