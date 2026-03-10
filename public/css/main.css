@@ -1,0 +1,36 @@
+body {
+    background-color: rgba(0, 230, 230, 0.685);
+    font-family: monospace;
+}
+
+table{
+    background: rgba(255, 255, 255, 0.2); /* transparência */
+    backdrop-filter: blur(10px);    
+    border: 1px;
+    border-color: rgba(255, 255, 255, 0.801);
+    border-style: solid;
+}
+
+#btnsTable {
+    background-color: rgba(255, 255, 255, 0.801);
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+#btnsTable:hover{
+    border: 2px;
+    border-color: rgba(255, 255, 255, 0.801);
+    border-style: solid;
+    box-shadow: 5px 5px 5px 1px;   
+}
+#TituloListaDeContatos{
+    background-color: rgba(255, 255, 255, 0.801);
+    border-radius: 1em;
+    padding: 10px;
+}
+
+tbody tr:hover {
+    border: 1px;
+    border-color: rgba(0, 0, 0, 0.808);
+    border-style: solid;
+}
