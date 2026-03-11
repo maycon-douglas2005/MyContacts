@@ -6,14 +6,26 @@ const inputs = document.querySelectorAll(".form-control-plaintext");
 const btnConcluiEdicao = document.createElement("button");
 const contentBtnConclui = document.createTextNode("Salvar Alterações");
 btnConcluiEdicao.appendChild(contentBtnConclui);
-btnConcluiEdicao.classList.add("btn", "btn-success", "col-auto", "mx-1");
+btnConcluiEdicao.classList.add(
+  "btn",
+  "btn-success",
+  "col-auto",
+  "mx-1",
+  "align-self-center",
+);
 btnConcluiEdicao.setAttribute("id", "save");
 
 // construindo botao Cancelar Alterações
 const btnCancelarEdicao = document.createElement("button");
 const contentBtnCancelarEdicao = document.createTextNode("Cancelar Alterações");
 btnCancelarEdicao.appendChild(contentBtnCancelarEdicao);
-btnCancelarEdicao.classList.add("btn", "btn-danger", "col-auto", "mx-1");
+btnCancelarEdicao.classList.add(
+  "btn",
+  "btn-danger",
+  "col-auto",
+  "mx-1",
+  "align-self-center",
+);
 btnCancelarEdicao.setAttribute("id", "btnCancelar");
 
 const divBtnsTable = document.getElementById("btnsTable");
