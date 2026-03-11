@@ -21,7 +21,7 @@ if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['login'] = true;
 } elseif (isset($_GET['alteracaoContato'])) {
     $msgsSucesso['updateContato'] = true;
-} elseif(isset($_GET['sucDelCont'])){
+} elseif (isset($_GET['sucDelCont'])) {
     $msgsSucesso['sucDelCont'] = true;
 }
 
@@ -64,15 +64,15 @@ require_once '../partials/head.php';
         </div>
     <?php } ?>
 
-        <?php
-        if($msgsSucesso['sucDelCont'] === true){ ?>
-            <div class="alert alert-success alert-dismissible fade show w-25 position-absolute"  style="left:37%;top: 5%;" role="alert">
-                <button class="btn-close" data-bs-dismiss="alert"></button>
-                <p class="p-0 m-0">Contato(s) excluidos com sucesso!</p>
-            </div>
-       <?php }
-       $msgsSucesso['sucDelCont'] = null;
-       ?>
+    <?php
+    if ($msgsSucesso['sucDelCont'] === true) { ?>
+        <div class="alert alert-success alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Contato(s) excluidos com sucesso!</p>
+        </div>
+    <?php }
+    $msgsSucesso['sucDelCont'] = null;
+    ?>
 
 
 
@@ -80,6 +80,32 @@ require_once '../partials/head.php';
 
     <!-- Corpo da página -->
     <main class="container ">
+
+        <!-- MODAL AVISO LOGOUT -->
+
+        <div class="modal fade" id="modalWarningLogout" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ao confirmar você irá encerrar sua sessão e terá que fazer
+                            login novamente para acessar seus contatos.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIM MODAL AVISO LOGOUT -->
+
+
+
         <section class="row d-flex flex-column  p-5 ">
             <div class="d-flex flex-row col-auto justify-content-around">
                 <h1 id="TituloListaDeContatos" class="m-0 col-auto ">Lista De Contatos</h1>
@@ -118,6 +144,8 @@ require_once '../partials/head.php';
     <script src="../../../public/js/btnEditContact.js"></script>
     <script src="../../../public/js/btnSalvarAlteracoes.js"></script>
     <script src="../../../public/js/btnDelContact.js"></script>
+
+
 </body>
 
 </html>
