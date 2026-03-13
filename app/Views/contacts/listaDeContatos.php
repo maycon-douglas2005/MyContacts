@@ -7,6 +7,10 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 use PROJETO\Controllers\ContatoController as ListContacts;
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // VERIFICANDO SE USUÁRIO ESTÁ LOGADO
 
 $msgsSucesso = [
@@ -25,7 +29,9 @@ if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['sucDelCont'] = true;
 }
 
-
+if (!isset($_SESSION['usuario']['id'])) {
+    header('Location: ../auth/login.php');
+}
 require_once '../partials/head.php';
 ?>
 
@@ -96,7 +102,7 @@ require_once '../partials/head.php';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger">Sair</button>
+                        <button type="button" class="btn btn-danger" id="btnLogout">Sair</button>
                     </div>
                 </div>
             </div>
@@ -144,7 +150,7 @@ require_once '../partials/head.php';
     <script src="../../../public/js/btnEditContact.js"></script>
     <script src="../../../public/js/btnSalvarAlteracoes.js"></script>
     <script src="../../../public/js/btnDelContact.js"></script>
-
+    <script src="../../../public/js/btnLogout.js"></script>
 
 </body>
 

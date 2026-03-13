@@ -4,11 +4,12 @@ namespace PROJETO\Controllers;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 use PROJETO\Models\Usuario as User;
-
-
+use PROJETO\Models\Usuario;
 
 class AuthController
 {
@@ -32,8 +33,18 @@ class AuthController
         header('Location: ../Views/auth/login.php?erroCamposVaziosLogin=true');
         exit;
     }
+
+    public static function logout()
+    {
+
+        Usuario::logoutUser();
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     AuthController::login();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === "GET" && isset($_GET['logout'])) {
+    AuthController::logout();
 }

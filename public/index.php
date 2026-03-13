@@ -15,7 +15,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
         <section class="apresentacao row d-flex flex-column align-items-center" style="height: 100%;">
 
             <div class="tituloEparagrafo col-7 d-flex flex-column align-items-center">
-                <h1 >Bem-Vindo A Sua Lista De Contatos</h1>
+                <h1>Bem-Vindo A Sua Lista De Contatos</h1>
                 <p class="lead">Gerencie seus contatos de maneira <mark>simples</mark> e <mark>eficiente</mark></p>
                 <div class="botoes">
                     <a class="btn btn-outline-primary" href="../app/Views/auth/cadastro.php">Cadastrar-se</a>
@@ -29,7 +29,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 
 
-            
+
         </div>
 
     </main>

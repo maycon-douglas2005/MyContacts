@@ -2,14 +2,16 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$userLogado = false;
+$userLogado;
 if (isset($_SESSION['usuario']['id'])) {
     $userLogado = true;
+} else {
+    $userLogado = false;
 } ?>
 
 <header class="container-fluid  d-flex flex-row justify-content-between">
     <div class="logo row-6">
-        <a class="col-auto btn fw-bold fs-5" href="<?= isset($arquivoUrl) ? "" : "../../../public/index.php" ?>">Lista
+        <a class="col-auto btn fw-bold fs-5" href="<?= isset($paginaIndex) ? "" : "../../../public/index.php" ?>">Lista
             De Contatos</a>
     </div>
     <nav class="row-6">

@@ -2,14 +2,11 @@ const btnDelete = document.getElementById("deleteContact");
 const table = document.getElementById("tableBody");
 const rowsTable = table.querySelectorAll("tr");
 
-
-
-
 function showCheckboxes() {
   rowsTable.forEach((item) => {
     const checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
-    checkbox.setAttribute("name", "contatoSelecionado")
+    checkbox.setAttribute("name", "contatoSelecionado");
     checkbox.setAttribute("class", "checkbox");
     checkbox.classList.add("form-check-input", "mt-3", "checkbox");
     item.append(checkbox);
@@ -64,42 +61,33 @@ function CancelExclusion() {
   document.getElementById("deleteContact").style.display = "flex";
 }
 
-
-
 document.getElementById("btnsTable").addEventListener("click", (btn) => {
   if (btn.target.id === "btnCancelExclusion") {
     CancelExclusion();
   }
 });
 
-
-
 // LÓGICA PARA EFETUAR A EXCLUSÃO
-function deletarContato(){
-  let contatosSelecionados = []
-  rowsTable.forEach(linha => {
-    if(linha.querySelector(".checkbox").checked){
+function deletarContato() {
+  let contatosSelecionados = [];
+  rowsTable.forEach((linha) => {
+    if (linha.querySelector(".checkbox").checked) {
       contatosSelecionados.push(linha.querySelector(".campo_email").value);
     }
-  })
+  });
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "../../Controllers/ContatoController.php");
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-    xhr.onload = function() {
-      if(xhr.status === 200){
-        console.log(xhr.status);
-        window.location.href = "../contacts/listaDeContatos.php";
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "../../Controllers/ContatoController.php");
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-      }
-    }
-
-    xhr.send("contatosSelecionados=" + encodeURIComponent(JSON.stringify(contatosSelecionados)));
-
+  xhr.send(
+    "contatosSelecionados=" +
+      encodeURIComponent(JSON.stringify(contatosSelecionados)),
+  );
 }
 
-document.getElementById('btnsTable').addEventListener('click', (btn) => {
-  if(btn.target.id === "btnConfirmExclusion"){
+document.getElementById("btnsTable").addEventListener("click", (btn) => {
+  if (btn.target.id === "btnConfirmExclusion") {
     deletarContato();
   }
-})
+});
