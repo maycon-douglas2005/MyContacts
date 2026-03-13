@@ -79,10 +79,9 @@ class ContatoController
         }
     }
 
-    public static function delete($dados){
+    public static function delete($dados)
+    {
         Contatos::deleteMultiple($dados);
-            
-
     }
 }
 
@@ -102,16 +101,3 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST["contatosSelecionados"
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['nome'])) {
     ContatoController::store();
 }
-/*if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($data['action']) && $data['action'] === "update") {
-    ContatoController::update($data);
-} elseif ($_SERVER['REQUEST_METHOD'] === "POST") {
-    ContatoController::store();
-}
-
-
-//EXCLUSÃO DE CONTATOS
-$contatos = json_decode($_POST["contatosSelecionados"] ?? "[]", true);
-if(!empty($contatos)){
-    ContatoController::delete($contatos);
-}
-    */

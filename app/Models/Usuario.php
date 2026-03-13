@@ -86,13 +86,14 @@ class Usuario
                 return 3; //ERRO_DOMINIO_INVALIDO
             }
         } catch (Exception $e) {
-            
-           // return self::ERRO_INESPERADO;
-           return $e;
+
+            // return self::ERRO_INESPERADO;
+            return $e;
         }
     }
 
-    public function getId($email){
+    public function getId($email)
+    {
         $db = new Database;
         $stmt = $db->realizandoConexao()->prepare("SELECT id FROM usuarios WHERE email = :email");
         $stmt->bindParam(":email", $email);
@@ -122,5 +123,12 @@ class Usuario
             return false;
         }
         return false;
+    }
+
+    public static function logoutUser()
+    {
+        session_unset();
+        session_destroy();
+        return true;
     }
 }
