@@ -5,9 +5,8 @@ namespace PROJETO\Controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PROJETO\Models\Contatos;
-use PROJETO\Helpers\VerificationFieldsHelper as FieldsHelper;
 use PROJETO\Helpers\EmailHelper as Email;
-
+use PROJETO\Models\Usuario as User;
 
 
 
@@ -35,7 +34,7 @@ class ContatoController
         $c = $_POST['celular'];
 
         // VERIFICANDO SE OS CAMPOS ESTÂO PREENCHIDOS
-        if (FieldsHelper::vericandoCamposPreenchidos($n, $e, $c)) {
+        if (User::verificacaoCamposPreenchidos($n, $e, $c)) {
 
             if (Email::verificacaoEmailCadastrado($e) === false) {
                 if (Email::validarEmail($e)) {
@@ -81,7 +80,13 @@ class ContatoController
 
     public static function delete($dados)
     {
-        Contatos::deleteMultiple($dados);
+        if(Contatos::deleteMultiple($dados)){
+            header('Location: ../Views/contacts/listaDeContatos.php?contatosDeletados=true');
+            exit;
+        }else{
+            header('Location: ../Views/contacts/listaDeContatos.php?contatosNaoDeletados=true');
+            exit;
+        }
     }
 }
 

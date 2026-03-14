@@ -79,7 +79,14 @@ function deletarContato() {
   const xhr = new XMLHttpRequest();
   xhr.open("POST", "../../Controllers/ContatoController.php");
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
+  xhr.onload = function () {
+    if(xhr.status === 200){
+      window.location.href = "../contacts/listaDeContatos.php?contatosDeletados=true";
+    }
+    else {
+      window.location.href = "../contacts/listaDeContatos.php?contatosNaoDeletados=true";
+    }
+  }
   xhr.send(
     "contatosSelecionados=" +
       encodeURIComponent(JSON.stringify(contatosSelecionados)),
