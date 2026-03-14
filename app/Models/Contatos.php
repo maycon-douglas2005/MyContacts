@@ -96,12 +96,15 @@ if (session_status() === PHP_SESSION_NONE) {
 
         public static function deleteMultiple($d){
             $contatos = $d;
+            
             foreach($contatos as $cont){
                 $bd = new Db;
                 $stmt = $bd->realizandoConexao()->prepare("DELETE FROM contatos_usuarios WHERE email = :email");
                 $stmt->bindValue(":email", $cont);
-                $stmt->execute();
                 
+                if(!$stmt->execute()){
+                    return false;
+                }
             }
             return true;
         }

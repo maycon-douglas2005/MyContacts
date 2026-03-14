@@ -6,7 +6,7 @@ class VerificationFieldsHelper
 {
     public static function vericandoCamposPreenchidos($a, $b, $c)
     {
-        if ($a !== null && $b !== null && $c !== null) {
+        if (empty($e) || empty($s) || empty($n)) {
             return true;
         } else {
             return false;

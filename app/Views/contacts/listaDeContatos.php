@@ -17,16 +17,49 @@ $msgsSucesso = [
     "cadastro" => null,
     "login" => null,
     "updateContato" => null,
-    "sucDelCont" => null
+    "sucDelCont" => null,
+    "campoVazioAddContact" => null,
+    "emailContatoCadastrado" => null,
+    "contatoAdicionado" => null,
+    "contatosDeletados" => null,
+    "contatosNaoDeletados" => null,
+    "formatoEmailIncorreto" => null,
+    "dominioEmailIncorreto" => null
+
 ];
 if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['cadastro'] = true;
-} elseif (isset($_GET['sucessoLogin'])) {
+} 
+if (isset($_GET['sucessoLogin'])) {
     $msgsSucesso['login'] = true;
-} elseif (isset($_GET['alteracaoContato'])) {
+} 
+if (isset($_GET['alteracaoContato'])) {
     $msgsSucesso['updateContato'] = true;
-} elseif (isset($_GET['sucDelCont'])) {
+} 
+if (isset($_GET['sucDelCont'])) {
     $msgsSucesso['sucDelCont'] = true;
+}
+if (isset($_GET['campoVazioAddContact'])) {
+    $msgsSucesso['campoVazioAddContact'] = true;
+}
+if (isset($_GET['emailContatoCadastrado'])) {
+    $msgsSucesso['emailContatoCadastrado'] = true;
+}
+if (isset($_GET['contatoAdicionado'])) {
+    $msgsSucesso['contatoAdicionado'] = true;
+}
+if (isset($_GET['contatosDeletados'])) {
+    $msgsSucesso['contatosDeletados'] = true;
+}
+if (isset($_GET['contatosNaoDeletados'])) {
+    $msgsSucesso['contatosNaoDeletados'] = true;
+}
+
+if (isset($_GET['formatoEmailIncorreto'])) {
+    $msgsSucesso['formatoEmailIncorreto'] = true;
+}
+if (isset($_GET['dominioEmailIncorreto'])) {
+    $msgsSucesso['dominioEmailIncorreto'] = true;
 }
 
 if (!isset($_SESSION['usuario']['id'])) {
@@ -79,6 +112,78 @@ require_once '../partials/head.php';
     <?php }
     $msgsSucesso['sucDelCont'] = null;
     ?>
+
+    <?php
+    if ($msgsSucesso['campoVazioAddContact'] === true) { ?>
+        <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Contato não adicionado. Por favor, preencha todos os campos do contato!</p>
+        </div>
+    <?php }
+    $msgsSucesso['campoVazioAddContact'] = null;
+    ?>
+
+    <?php
+    if ($msgsSucesso['emailContatoCadastrado'] === true) { ?>
+        <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Contato não adicionado. O email digitado pertence a um contato já cadastrado!</p>
+        </div>
+    <?php }
+    $msgsSucesso['emailContatoCadastrado'] = null;
+    ?>
+
+    <?php
+    if ($msgsSucesso['contatoAdicionado'] === true) { ?>
+        <div class="alert alert-success alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Contato adicionado com sucesso!</p>
+        </div>
+    <?php }
+    $msgsSucesso['contatoAdicionado'] = null;
+    ?>
+
+    <?php
+    if ($msgsSucesso['contatosDeletados'] === true) { ?>
+        <div class="alert alert-success alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Contato(s) deletado(s) com sucesso!</p>
+        </div>
+    <?php }
+    $msgsSucesso['contatosDeletados'] = null;
+    ?>
+
+
+    <?php
+    if ($msgsSucesso['contatosNaoDeletados'] === true) { ?>
+        <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Erro ao deletar contato(s)!</p>
+        </div>
+    <?php }
+    $msgsSucesso['contatosNaoDeletados'] = null;
+    ?>
+
+    <?php
+    if ($msgsSucesso['formatoEmailIncorreto'] === true) { ?>
+        <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Formato de email incorreto!</p>
+        </div>
+    <?php }
+    $msgsSucesso['formatoEmailIncorreto'] = null;
+    ?>
+
+    <?php
+    if ($msgsSucesso['dominioEmailIncorreto'] === true) { ?>
+        <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
+            <button class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="p-0 m-0">Domínio de email inválido!</p>
+        </div>
+    <?php }
+    $msgsSucesso['dominioEmailIncorreto'] = null;
+    ?>
+
 
 
 

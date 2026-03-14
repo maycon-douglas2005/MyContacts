@@ -5,9 +5,8 @@ namespace PROJETO\Controllers;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use PROJETO\Models\Contatos;
-use PROJETO\Helpers\VerificationFieldsHelper as FieldsHelper;
 use PROJETO\Helpers\EmailHelper as Email;
-
+use PROJETO\Models\Usuario as User;
 
 
 
@@ -28,14 +27,36 @@ class ContatoController
         exit;
     }
 
+    public static function formatarCelularBR($numero)
+    {
+        // remove tudo que não for número
+        $numero = preg_replace('/\D/', '', $numero);
+
+        // valida celular brasileiro
+        if (!preg_match('/^\d{2}9\d{8}$/', $numero)) {
+            return false;
+        }
+
+        // separa partes
+        $ddd = substr($numero, 0, 2);
+        $parte1 = substr($numero, 2, 5);
+        $parte2 = substr($numero, 7, 4);
+
+        // retorna formatado
+        return "($ddd) $parte1-$parte2";
+    }
+
     public static function store()
     {
         $n = $_POST['nome'];
         $e = $_POST['email'];
-        $c = $_POST['celular'];
+        $c = ContatoController::formatarCelularBR($_POST['celular']);
 
+        
+        
+        
         // VERIFICANDO SE OS CAMPOS ESTÂO PREENCHIDOS
-        if (FieldsHelper::vericandoCamposPreenchidos($n, $e, $c)) {
+        if (User::verificacaoCamposPreenchidos($n, $e, $c)) {
 
             if (Email::verificacaoEmailCadastrado($e) === false) {
                 if (Email::validarEmail($e)) {
@@ -81,7 +102,13 @@ class ContatoController
 
     public static function delete($dados)
     {
-        Contatos::deleteMultiple($dados);
+        if (Contatos::deleteMultiple($dados)) {
+            header('Location: ../Views/contacts/listaDeContatos.php?contatosDeletados=true');
+            exit;
+        } else {
+            header('Location: ../Views/contacts/listaDeContatos.php?contatosNaoDeletados=true');
+            exit;
+        }
     }
 }
 

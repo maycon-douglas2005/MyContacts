@@ -83,4 +83,3 @@ function criarFormAddContato() {
 btnAddContact.addEventListener('click', () => {
     criarFormAddContato();
 })
-

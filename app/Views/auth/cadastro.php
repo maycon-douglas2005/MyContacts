@@ -29,6 +29,11 @@ require_once '../partials/head.php';
                     <?php endif; ?>
 
                     <?php
+                    if (isset($_GET['erroDominioEmail'])): ?>
+                        <p class="alert alert-danger">Domínio de email inválido!</p>
+                    <?php endif; ?>
+
+                    <?php
                     if (isset($_GET['erroEmailCadastrado'])): ?>
                         <p class="alert alert-danger">Este email já está cadastrado. Por favor, escolha outro email.</p>
                     <?php endif; ?>
