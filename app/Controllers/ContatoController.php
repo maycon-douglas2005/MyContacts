@@ -27,52 +27,47 @@ class ContatoController
         exit;
     }
 
-    public static function formatarCelularBR($numero)
-    {
-        // remove tudo que não for número
-        $numero = preg_replace('/\D/', '', $numero);
 
-        // valida celular brasileiro
-        if (!preg_match('/^\d{2}9\d{8}$/', $numero)) {
-            return false;
-        }
-
-        // separa partes
-        $ddd = substr($numero, 0, 2);
-        $parte1 = substr($numero, 2, 5);
-        $parte2 = substr($numero, 7, 4);
-
-        // retorna formatado
-        return "($ddd) $parte1-$parte2";
-    }
 
     public static function store()
     {
         $n = $_POST['nome'];
         $e = $_POST['email'];
-        $c = ContatoController::formatarCelularBR($_POST['celular']);
+        $c = Contatos::formatarCelularBR($_POST['celular']);
 
-        
-        
-        
+
+
+
         // VERIFICANDO SE OS CAMPOS ESTÂO PREENCHIDOS
         if (User::verificacaoCamposPreenchidos($n, $e, $c)) {
 
             if (Email::verificacaoEmailCadastrado($e) === false) {
-                if (Email::validarEmail($e)) {
-                    $Contato = new Contatos($n, $e, $c);
-                    if ($Contato->save()) {
-                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=true');
+                if (is_string($c)) {
+
+                    if (Email::validarEmail($e)) {
+                        $Contato = new Contatos($n, $e, $c);
+                        if ($Contato->save()) {
+                            header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=true');
+                            exit;
+                        } else {
+                            header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=false');
+                            exit;
+                        }
+                    } elseif (Email::validarEmail($e) === 2) {
+                        header('Location: ../Views/contacts/listaDeContatos.php?formatoEmailIncorreto=true');
                         exit;
-                    } else {
-                        header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=false');
+                    } elseif (Email::validarEmail($e) === 3) {
+                        header('Location: ../Views/contacts/listaDeContatos.php?dominioEmailIncorreto=true');
                         exit;
                     }
-                } elseif (Email::validarEmail($e) === 2) {
-                    header('Location: ../Views/contacts/listaDeContatos.php?formatoEmailIncorreto=true');
+                } elseif($c === 2) {
+                    header('Location: ../Views/contacts/listaDeContatos.php?celularCaracteresErro=true');
                     exit;
-                } elseif (Email::validarEmail($e) === 3) {
-                    header('Location: ../Views/contacts/listaDeContatos.php?dominioEmailIncorreto=true');
+                } elseif($c === 3){
+                    header('Location: ../Views/contacts/listaDeContatos.php?celularQuantidadeErro=true');
+                    exit;
+                } elseif($c === 4){
+                    header('Location: ../Views/contacts/listaDeContatos.php?celularDDDerro=true');
                     exit;
                 }
             } else {

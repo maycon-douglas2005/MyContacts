@@ -41,9 +41,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <script>
         const img = document.getElementById("imgList");
 
-img.onerror = function () {
-    this.src = "/MyContacts/public/images/home.png";
-};
+        img.onerror = function() {
+            this.src = "/MyContacts/public/images/home.png";
+        };
     </script>
 </body>
 

@@ -48,9 +48,10 @@ function salvandoAlteracoes() {
     .then((response) => response.text())
     .then((data) => {
       window.location.href = "listaDeContatos.php?alteracaoContato=true";
+      
     })
     .catch((error) => {
-      console.error("Erro:", error);
+      window.location.href = "listaDeContatos.php?alteracaoErro=true";
     });
 }
 

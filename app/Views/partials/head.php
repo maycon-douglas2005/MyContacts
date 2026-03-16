@@ -14,6 +14,10 @@
         link.onerror = function() {
 
             link.href = "/MyContacts/public/css/main.css";
+            link.onerror = function() {
+
+                link.href = "css/main.css";
+            };
         };
     </script>
 </head>
