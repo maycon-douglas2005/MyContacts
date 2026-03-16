@@ -24,7 +24,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
             </div>
 
-            <img style="border: 3px; border-color: gray; border-style: solid;" src="../public/images/home.png" class="img-fluid col-8 shadow-lg mt-4" alt="">
+            <img id="imgList" style="border: 3px; border-color: gray; border-style: solid;" src="../public/images/home.png" class="img-fluid col-8 shadow-lg mt-4" alt="">
         </section>
 
 
@@ -38,7 +38,13 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
     <?php require_once '../app/Views/partials/footer.php' ?>
 
+    <script>
+        const img = document.getElementById("imgList");
 
+img.onerror = function () {
+    this.src = "/MyContacts/public/images/home.png";
+};
+    </script>
 </body>
 
 </html>
