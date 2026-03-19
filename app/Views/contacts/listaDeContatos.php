@@ -25,33 +25,25 @@ $msgsSucesso = [
     "contatosNaoDeletados" => null,
     "formatoEmailIncorreto" => null,
     "dominioEmailIncorreto" => null,
-    "celularCaracteresErro" => null,
-    "celularQuantidadeErro" => null,
-    "celularDDDerro" => null,
+    "celularErro" => null,
     "alteracaoErro" => null
 
 ];
 if (isset($_GET['alteracaoErro'])) {
     $msgsSucesso['alteracaoErro'] = true;
-} 
-if (isset($_GET['celularDDDerro'])) {
-    $msgsSucesso['celularDDDerro'] = true;
-} 
-if (isset($_GET['celularQuantidadeErro'])) {
-    $msgsSucesso['celularQuantidadeErro'] = true;
-} 
-if (isset($_GET['celularCaracteresErro'])) {
-    $msgsSucesso['celularCaracteresErro'] = true;
-} 
+}
+if (isset($_GET['celularErro'])) {
+    $msgsSucesso['celularErro'] = true;
+}
 if (isset($_GET['sucessoCadastro'])) {
     $msgsSucesso['cadastro'] = true;
-} 
+}
 if (isset($_GET['sucessoLogin'])) {
     $msgsSucesso['login'] = true;
-} 
+}
 if (isset($_GET['alteracaoContato'])) {
     $msgsSucesso['updateContato'] = true;
-} 
+}
 if (isset($_GET['sucDelCont'])) {
     $msgsSucesso['sucDelCont'] = true;
 }
@@ -204,33 +196,13 @@ require_once '../partials/head.php';
     ?>
 
     <?php
-    if ($msgsSucesso['celularCaracteresErro'] === true) { ?>
+    if ($msgsSucesso['celularErro'] === true) { ?>
         <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
             <button class="btn-close" data-bs-dismiss="alert"></button>
-            <p class="p-0 m-0">Celular inválido. Por favor, digite apenas números!</p>
+            <p class="p-0 m-0">Celular inválido. Use o formato (DD) 9XXXX-XXXX.</p>
         </div>
     <?php }
-    $msgsSucesso['celularCaracteresErro'] = null;
-    ?>
-
-    <?php
-    if ($msgsSucesso['celularQuantidadeErro'] === true) { ?>
-        <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
-            <button class="btn-close" data-bs-dismiss="alert"></button>
-            <p class="p-0 m-0">Celular inválido. Digite apenas 11 números: DDD + número do celular. Exemplo: 11987654321</p>
-        </div>
-    <?php }
-    $msgsSucesso['celularQuantidadeErro'] = null;
-    ?>
-
-    <?php
-    if ($msgsSucesso['celularDDDerro'] === true) { ?>
-        <div class="alert alert-danger alert-dismissible fade show w-25 position-absolute" style="left:37%;top: 5%;" role="alert">
-            <button class="btn-close" data-bs-dismiss="alert"></button>
-            <p class="p-0 m-0">Celular inválido. Por favor, digite um DDD válido.</p>
-        </div>
-    <?php }
-    $msgsSucesso['celularDDDerro'] = null;
+    $msgsSucesso['celularErro'] = null;
     ?>
 
     <?php

@@ -14,14 +14,15 @@ class ContatoController
 {
     public static function update($d)
     {
+
         header('Content-Type: application/json');
-        if (Contatos::updateMultiple($d)) {
+        if (Contatos::updateMultiple($d) === true) {
             echo json_encode([
                 "status" => "success"
             ]);
-        } else {
+        } elseif (Contatos::updateMultiple($d) === 2) {
             echo json_encode([
-                "status" => "error"
+                "status" => "erroCelular"
             ]);
         }
         exit;
@@ -42,7 +43,7 @@ class ContatoController
         if (User::verificacaoCamposPreenchidos($n, $e, $c)) {
 
             if (Email::verificacaoEmailCadastrado($e) === false) {
-                if (is_string($c)) {
+                if ($c !== false) {
 
                     if (Email::validarEmail($e)) {
                         $Contato = new Contatos($n, $e, $c);
@@ -60,14 +61,8 @@ class ContatoController
                         header('Location: ../Views/contacts/listaDeContatos.php?dominioEmailIncorreto=true');
                         exit;
                     }
-                } elseif($c === 2) {
-                    header('Location: ../Views/contacts/listaDeContatos.php?celularCaracteresErro=true');
-                    exit;
-                } elseif($c === 3){
-                    header('Location: ../Views/contacts/listaDeContatos.php?celularQuantidadeErro=true');
-                    exit;
-                } elseif($c === 4){
-                    header('Location: ../Views/contacts/listaDeContatos.php?celularDDDerro=true');
+                } else {
+                    header('Location: ../Views/contacts/listaDeContatos.php?celularErro=true');
                     exit;
                 }
             } else {

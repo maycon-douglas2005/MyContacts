@@ -45,10 +45,13 @@ function salvandoAlteracoes() {
       registros: registrosAlterados,
     }),
   })
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then((data) => {
-      window.location.href = "listaDeContatos.php?alteracaoContato=true";
-      
+      if (data.status === "success") {
+        window.location.href = "listaDeContatos.php?alteracaoContato=true";
+      } else if (data.status === "erroCelular") {
+        window.location.href = "listaDeContatos.php?celularErro=true";
+      }
     })
     .catch((error) => {
       window.location.href = "listaDeContatos.php?alteracaoErro=true";

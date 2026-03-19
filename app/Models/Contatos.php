@@ -54,68 +54,6 @@ class Contatos
         return $dados;
     }
 
-
-    public static function updateMultiple($d)
-    {
-        $bd = new Db;
-
-        foreach ($d['registros'] as $registro) {
-
-            $campos = [];
-            $valores = [];
-
-            if (isset($registro['nome'])) {
-                $campos[] = "nome = :nome";
-                $valores[':nome'] = $registro['nome'];
-            }
-
-            if (isset($registro['email'])) {
-                $campos[] = "email = :email";
-                $valores[':email'] = $registro['email'];
-            }
-
-            if (isset($registro['celular'])) {
-                $cel = Contatos::formatarCelularBR($registro['celular']);
-                if (is_string($cel)) {
-                    $campos[] = "celular = :celular";
-                    $valores[':celular'] = $cel;
-                }
-                switch($cel){
-                    case 2:
-                        header('Location: ../Views/contacts/listaDeContatos.php?celularCaracteresErro=true');
-                        exit;
-                        return false;
-                        
-                    case 3:
-                        header('Location: ../Views/contacts/listaDeContatos.php?celularQuantidadeErro=true');
-                        exit;
-                        return false;
-                    case 4:
-                        header('Location: ../Views/contacts/listaDeContatos.php?celularDDDerro=true');
-                        exit;
-                        return false;
-                       
-
-                }
-            }
-
-            if (empty($campos)) {
-                continue;
-            }
-
-            $sql = "UPDATE contatos_usuarios SET " . implode(", ", $campos) . " WHERE id = :id";
-
-            $stmt = $bd->realizandoConexao()->prepare($sql);
-
-            $valores[':id'] = $registro['id'];
-
-            $stmt->execute($valores);
-        }
-
-        return true;
-    }
-
-
     public static function formatarCelularBR($numero)
     {
         $dddsValidos = [
@@ -187,25 +125,71 @@ class Contatos
             98,
             99
         ];
-        if (ctype_digit($numero)) {
-            $numSemEspacos = trim($numero);
-            if (mb_strlen($numSemEspacos) !== 11) {
-                return 3; // codigo para erro de quantidade de numeros errados
-            } else {
-                $ddd = substr($numero, 0, 2);
-                $parte1 = substr($numero, 2, 5);
-                $parte2 = substr($numero, 7, 4);
+        if (preg_match("/^(\(\d{2}\)\s?|\d{2}\s?)9\s?\d{4}-?\d{4}$/", $numero)) {
+            $numeroLimpo = preg_replace("/\D/", "", $numero);
 
-                if (in_array($ddd, $dddsValidos)) {
-                    return "($ddd) $parte1-$parte2";
-                } else {
-                    return 4; // codigo para erro de DDD inválido
-                }
+            $ddd = substr($numeroLimpo, 0, 2);
+            $parte1 = substr($numeroLimpo, 2, 5);
+            $parte2 = substr($numeroLimpo, 7, 4);
+
+            if (in_array($ddd, $dddsValidos)) {
+                return "($ddd) $parte1-$parte2";
+            } else {
+                return false;
             }
         } else {
-            return 2; // codigo para erro de nao ter so numeros 
+            return false;
         }
     }
+
+    public static function updateMultiple($d)
+    {
+        $bd = new Db;
+
+        foreach ($d['registros'] as $registro) {
+
+            $campos = [];
+            $valores = [];
+
+            if (isset($registro['nome'])) {
+                $campos[] = "nome = :nome";
+                $valores[':nome'] = $registro['nome'];
+            }
+
+            if (isset($registro['email'])) {
+                $campos[] = "email = :email";
+                $valores[':email'] = $registro['email'];
+            }
+
+            if (isset($registro['celular'])) {
+                $cel = Contatos::formatarCelularBR($registro['celular']);
+                if ($cel === false) {
+
+                    return 2;
+                } else {
+                    $campos[] = "celular = :celular";
+                    $valores[':celular'] = $cel;
+                }
+            }
+
+            if (empty($campos)) {
+                continue;
+            }
+
+            $sql = "UPDATE contatos_usuarios SET " . implode(", ", $campos) . " WHERE id = :id";
+
+            $stmt = $bd->realizandoConexao()->prepare($sql);
+
+            $valores[':id'] = $registro['id'];
+
+            $stmt->execute($valores);
+        }
+
+        return true;
+    }
+
+
+
     public static function deleteMultiple($d)
     {
         $contatos = $d;
