@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 use LengthException;
 use PROJETO\config\Database as Db;
-use PROJETO\Helpers\EmailHelper;
+use PROJETO\Helpers\EmailHelper as Email;
 use PDO;
 
 class Contatos
@@ -157,15 +157,22 @@ class Contatos
             }
 
             if (isset($registro['email'])) {
-                $campos[] = "email = :email";
-                $valores[':email'] = $registro['email'];
+                $email = $registro['email'];
+
+                if (Email::validarEmail($email) === true) {
+                    $campos[] = "email = :email";
+                    $valores[':email'] = $email;
+                } elseif (Email::validarEmail($email) === 2) {
+                    return 2; // ERRO FORMATO
+                } elseif (Email::validarEmail($email) === 3) {
+                    return 3; // ERRO
+                }
             }
 
             if (isset($registro['celular'])) {
                 $cel = Contatos::formatarCelularBR($registro['celular']);
                 if ($cel === false) {
-
-                    return 2;
+                    return 4; // ERRO CELULAR
                 } else {
                     $campos[] = "celular = :celular";
                     $valores[':celular'] = $cel;

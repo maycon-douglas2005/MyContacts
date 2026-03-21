@@ -51,6 +51,12 @@ function salvandoAlteracoes() {
         window.location.href = "listaDeContatos.php?alteracaoContato=true";
       } else if (data.status === "erroCelular") {
         window.location.href = "listaDeContatos.php?celularErro=true";
+      } else if (data.status === "formatoEmailIncorreto") {
+        window.location.href = "listaDeContatos.php?formatoEmailIncorreto=true";
+      } else if (data.status === "erro") {
+        window.location.href = "listaDeContatos.php?alteracaoErro=true";
+      } else if (data.status === "dominioEmailIncorreto") {
+        window.location.href = "listaDeContatos.php?dominioEmailIncorreto=true";
       }
     })
     .catch((error) => {

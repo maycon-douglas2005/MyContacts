@@ -16,13 +16,26 @@ class ContatoController
     {
 
         header('Content-Type: application/json');
-        if (Contatos::updateMultiple($d) === true) {
+        $updateResult = Contatos::updateMultiple($d);
+        if ($updateResult === true) {
             echo json_encode([
                 "status" => "success"
             ]);
-        } elseif (Contatos::updateMultiple($d) === 2) {
+        } elseif ($updateResult === 2) {
+            echo json_encode([
+                "status" => "formatoEmailIncorreto"
+            ]);
+        } elseif ($updateResult === 3) {
+            echo json_encode([
+                "status" => "dominioEmailIncorreto"
+            ]);
+        } elseif ($updateResult === 4) {
             echo json_encode([
                 "status" => "erroCelular"
+            ]);
+        } else {
+            echo json_encode([
+                "status" => "erro"
             ]);
         }
         exit;
@@ -45,7 +58,7 @@ class ContatoController
             if (Email::verificacaoEmailCadastrado($e) === false) {
                 if ($c !== false) {
 
-                    if (Email::validarEmail($e)) {
+                    if (Email::validarEmail($e) === true) {
                         $Contato = new Contatos($n, $e, $c);
                         if ($Contato->save()) {
                             header('Location: ../Views/contacts/listaDeContatos.php?contatoAdicionado=true');
