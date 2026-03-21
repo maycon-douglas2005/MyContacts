@@ -23,7 +23,7 @@ session_start();
                     if (isset($_GET['erroEmail'])): ?> <p class="alert alert-danger">E-mail ou senha inválido!</p>
                     <?php endif; ?>
 
-                    <input type="email" name="email" id="" class="col-auto" placeholder="Email" maxlength="100">
+                    <input type="email" name="email" id="" class="col-auto" data-toggle="tooltip" data-placement="bottom" title="Formato Aceito: nome@domínio.com" placeholder="Email" maxlength="100">
                     <input type="password" name="password" class="col-auto" id="" placeholder="Senha" maxlength="100">
                     <button class="btn btn-success btn-outline-black">Enviar</button>
                 </div>

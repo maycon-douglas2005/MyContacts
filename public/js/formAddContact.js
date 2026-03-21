@@ -69,9 +69,18 @@ function criarFormAddContato() {
   inputEmail.placeholder = "Email";
   inputEmail.type = "email";
   inputEmail.name = "email";
+  inputEmail.setAttribute("data-toggle", "tooltip");
+  inputEmail.setAttribute("data-placement", "bottom");
+  inputEmail.setAttribute("title", "Formato Aceito: nome@domínio.com");
 
   const inputCelular = document.createElement("input");
   inputCelular.classList.add("mb-2", "form-control");
+  inputCelular.setAttribute("data-toggle", "tooltip");
+  inputCelular.setAttribute("data-placement", "bottom");
+  inputCelular.setAttribute(
+    "title",
+    "Formatos Aceitos: (11) 91234-5678 ou 11912345678",
+  );
   inputCelular.placeholder = "Celular";
   inputCelular.type = "tel";
   inputCelular.name = "celular";

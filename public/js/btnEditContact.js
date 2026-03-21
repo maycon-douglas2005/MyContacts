@@ -33,6 +33,19 @@ const divBtnsTable = document.getElementById("btnsTable");
 function habilitaCampos() {
   inputs.forEach((item) => {
     item.removeAttribute("readonly");
+    if (item.classList.contains("campo_email")) {
+      item.setAttribute("data-toggle", "tooltip");
+      item.setAttribute("data-placement", "bottom");
+      item.setAttribute("title", "Formato Aceito: nome@domínio.com");
+    }
+    if (item.classList.contains("campo_celular")) {
+      item.setAttribute("data-toggle", "tooltip");
+      item.setAttribute("data-placement", "bottom");
+      item.setAttribute(
+        "title",
+        "Formatos Aceitos: (11) 91234-5678 ou 11912345678",
+      );
+    }
   });
 }
 
@@ -55,6 +68,16 @@ function cancelandoAlteracoes() {
   // desabilitando campos
   inputs.forEach((item) => {
     item.readOnly = true;
+    if (item.classList.contains("campo_email")) {
+      item.removeAttribute("data-toggle");
+      item.removeAttribute("data-placement");
+      item.removeAttribute("title");
+    }
+    if (item.classList.contains("campo_celular")) {
+      item.removeAttribute("data-toggle");
+      item.removeAttribute("data-placement");
+      item.removeAttribute("title");
+    }
   });
 
   // removendo botões de concluir alteração e cancelar alteração
