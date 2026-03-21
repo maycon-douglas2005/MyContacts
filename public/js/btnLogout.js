@@ -3,7 +3,7 @@ btnLogout.addEventListener("click", () => {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "../../Controllers/AuthController.php?logout=yes");
   xhr.onload = function () {
-    location.href = "../auth/login.php";
+    location.href = "../../../public/index.php";
   };
   xhr.send();
 });

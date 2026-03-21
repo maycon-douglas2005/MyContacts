@@ -24,7 +24,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
             </div>
 
-            <img id="imgList" style="border: 3px; border-color: gray; border-style: solid;" src="../public/images/home.png" class="img-fluid col-8 shadow-lg mt-4" alt="">
+            <div class="card w-75 mt-2">
+                <img id="imgList" src="../public/images/tela_home.png" class="card-img-top shadow-lg mt-2" alt="Preview do sistema">
+                <div class="card-body">
+                    <p class="card-text text-muted small fst-italic">
+                        Exemplo da interface de gerenciamento de contatos
+                    </p>
+                </div>
+            </div>
         </section>
 
 
