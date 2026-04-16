@@ -9,28 +9,27 @@ if (isset($_SESSION['usuario']['id'])) {
     $userLogado = false;
 } ?>
 
-<header class="container-fluid  d-flex flex-row justify-content-between">
+<header style="background-color: #A0D0E4; border-top-left-radius: 10px; border-top-right-radius: 10px;" class="container d-flex flex-row justify-content-between align-items-center mt-3 shadow">
     <div class="logo row-6">
-        <a class="col-auto btn fw-bold fs-5" href="<?= isset($paginaIndex) ? "" : "../../../public/index.php" ?>">Lista
-            De Contatos</a>
+        <a style="font-family: 'Inter', sans-serif;" class=" text-white col-auto btn fw-bold fs-5 logolink" href="<?= isset($paginaIndex) ? "" : "../../../public/index.php" ?>">MyContacts</a>
     </div>
-    <nav class="row-6">
-        <ul class="col-auto list-unstyled d-flex flex-row">
+    <nav class="row-6 d-flex">
+        <ul class="  mt-2 col-auto list-unstyled d-flex flex-row  ">
 
 
-            <li class="mx-2 btn <?php if ($userLogado): ?> d-none <?php endif; ?>">
-                <a href="<?= isset($paginaIndex) ? "../app/Views/auth/cadastro.php" : "../auth/cadastro.php" ?>"
-                    class=" text-dark text-decoration-none btn btn-outline-secondary">Cadastro</a>
+            <li class=" mx-2 btn <?php if ($userLogado): ?> d-none <?php endif; ?>">
+                <a style="font-family: 'Inter', sans-serif;" href="<?= isset($paginaIndex) ? "../app/Views/auth/cadastro.php" : "../auth/cadastro.php" ?>"
+                    class="mt-2 text-white text-decoration-none btn btn-outline-secondary">Cadastro</a>
             </li>
 
             <li class="mx-2 btn <?php if ($userLogado): ?> d-none <?php endif; ?>">
-                <a href="<?= isset($paginaIndex) ? "../app/Views/auth/login.php" : "../auth/login.php" ?>"
-                    class=" text-dark text-decoration-none btn btn-outline-secondary">Login</a>
+                <a style="font-family: 'Inter', sans-serif;" href="<?= isset($paginaIndex) ? "../app/Views/auth/login.php" : "../auth/login.php" ?>"
+                    class="mt-2 text-white text-decoration-none btn btn-outline-secondary">Login</a>
             </li>
 
 
             <li class="mx-2 btn <?php if (!$userLogado): ?> d-none <?php endif; ?> ">
-                <a href="
+                <a style="font-family: 'Inter', sans-serif;" href="
                 <?= isset($paginaIndex) ? "../app/Views/contacts/listaDeContatos.php" : "../contacts/listaDeContatos.php" ?>"
                     class="text-dark text-decoration-none btn btn-outline-primary">Home</a>
             </li>
