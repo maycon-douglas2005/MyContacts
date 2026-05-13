@@ -9,10 +9,10 @@ class Database
 {
 
 
-    private $database = 'ezyro_40942532_lista_de_contatos';
-    private $username = 'ezyro_40942532';
-    private $password = '4d0a6f1218c6';
-    private $host = 'sql100.ezyro.com';
+    private $database = 'if0_41912816_lista_de_contatos';
+    private $username = 'if0_41912816';
+    private $password = 'zBiBljwVXSfQv';
+    private $host = 'sql308.infinityfree.com';
 
     public function realizandoConexao()
     {
