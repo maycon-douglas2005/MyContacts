@@ -220,7 +220,7 @@ require_once '../partials/head.php';
 
 
     <!-- Corpo da página -->
-    <main class="container ">
+    <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="d-flex flex-row justify-content-center py-3 shadow mt-5 mb-3 container  flex-fill  ">
 
         <!-- MODAL AVISO LOGOUT -->
 
@@ -248,7 +248,7 @@ require_once '../partials/head.php';
 
 
         <section class="row d-flex flex-column  p-5 ">
-            <div class="d-flex flex-row col-auto justify-content-around">
+            <div class="d-flex flex-row col-auto gap-5">
                 <h1 id="TituloListaDeContatos" class="m-0 col-auto ">Lista De Contatos</h1>
                 <div id="btnsTable" class="btns d-flex flex-row">
                     <button class="mx-1 btn btn-primary col-auto align-self-center" id="addContact">Adicionar</button>
@@ -258,7 +258,7 @@ require_once '../partials/head.php';
 
             </div>
 
-            <table class="col-12 shadow-lg mt-2 ">
+            <table class="col-12 shadow-lg mt-2 " style="background-color: rgba(255, 255, 255, 0.74);">
                 <thead>
                     <tr class="justify-content-around d-flex">
                         <th>Nome</th>
