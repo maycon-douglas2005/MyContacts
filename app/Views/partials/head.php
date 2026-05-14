@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Lista de Contatos</title>
     <link id="main-style" rel="stylesheet" href="<?= isset($paginaIndex) ? "/public/css/main.css" : "../../../public/css/main.css" ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet">
     <!-- Correção temporária para alterar caminho de arquivo css -->
     <script>
         const link = document.getElementById("main-style");
@@ -20,4 +22,15 @@
             };
         };
     </script>
+
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        mark {
+            font-family: 'Instrument Serif', serif;
+            font-size: 30px;
+        }
+    </style>
 </head>
