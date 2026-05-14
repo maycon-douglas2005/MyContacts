@@ -93,10 +93,10 @@ class ContatoController
     {
         $ListaContatos = Contatos::getAll();
         foreach ($ListaContatos as $linhaListaContatos) { ?>
-            <tr class="justify-content-around d-flex">
-                <td class="d-flex justify-content-center"><input data-original="<?php echo $linhaListaContatos['nome'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext campo_nome" value="<?php echo $linhaListaContatos['nome'] ?>"></td>
-                <td class="d-flex justify-content-center"><input data-original="<?php echo $linhaListaContatos['email'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext campo_email" value="<?php echo $linhaListaContatos['email'] ?>"></td>
-                <td class="d-flex justify-content-center"><input data-original="<?php echo $linhaListaContatos['celular'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext campo_celular" value="<?php echo $linhaListaContatos['celular'] ?>"></td>
+            <tr class="justify-content-around d-flex ">
+                <td class="d-flex justify-content-center "><input data-original="<?php echo $linhaListaContatos['nome'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext  text-center campo_nome" value="<?php echo $linhaListaContatos['nome'] ?>"></td>
+                <td class="d-flex justify-content-center "><input data-original="<?php echo $linhaListaContatos['email'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext  text-center campo_email" value="<?php echo $linhaListaContatos['email'] ?>"></td>
+                <td class="d-flex justify-content-center "><input data-original="<?php echo $linhaListaContatos['celular'] ?>" data-id="<?php echo $linhaListaContatos['id'] ?>" type="text" readonly class="form-control-plaintext  text-center campo_celular" value="<?php echo $linhaListaContatos['celular'] ?>"></td>
 
             </tr>
 <?php

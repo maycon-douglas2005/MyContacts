@@ -16,7 +16,7 @@ require_once '../partials/head.php';
             <div class="alert alert-warning <?= isset($_GET['userDeslogado']) ? "d-flex" : "d-none" ?>">Você precisa estar logado antes de acessar a sua lista de contatos!</div>
             <header>
                 <h2 class="">Criando Sua Conta</h2>
-                <p class="text-muted">Por favor, preencha os campos abaixo:</p>
+                <p class="text-muted m-0">Por favor, preencha os campos abaixo:</p>
             </header>
             <div class="d-flex flex-column gap-2">
 
