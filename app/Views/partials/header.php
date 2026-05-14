@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$userLogado;
+$userLogado = null;
 if (isset($_SESSION['usuario']['id'])) {
     $userLogado = true;
 } else {
