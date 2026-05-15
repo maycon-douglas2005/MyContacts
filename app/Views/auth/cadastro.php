@@ -12,6 +12,29 @@ require_once '../partials/head.php';
 
 
     <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="d-flex flex-row justify-content-center py-3 shadow mt-5 mb-3 container  flex-fill ">
+        <!-- MODAL AVISO LOGOUT -->
+
+        <div class="modal fade" id="modalWarningLogout" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ao confirmar você irá encerrar sua sessão e terá que fazer
+                            login novamente para acessar seus contatos.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="btnLogout">Sair</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIM MODAL AVISO LOGOUT -->
+
         <form action="../../Controllers/UsuarioController.php" method="POST" class="text-center rounded-3 p-4 w-50 bg-white col-auto shadow-lg  d-flex flex-column justify-content-between ">
             <div class="alert alert-warning <?= isset($_GET['userDeslogado']) ? "d-flex" : "d-none" ?>">Você precisa estar logado antes de acessar a sua lista de contatos!</div>
             <header>
@@ -56,6 +79,7 @@ require_once '../partials/head.php';
 
     </main>
 
+    <script src="../../../public/js/btnLogout.js"></script>
 
     <?php require_once '../partials/footer.php' ?>
 </body>
