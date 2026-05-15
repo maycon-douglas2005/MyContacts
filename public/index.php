@@ -24,8 +24,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
                 </div>
 
                 <div class="card p-2  col-7 mb-3 mt-2 d-flex flex-column justify-content-center align-items-center">
-                    <video autoplay muted loop style="height: 200px;" class="rounded shadow-lg card-img-top img-fluid  mt-3">
-                        <source src="public/images/video_home.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline preload="auto" poster="images/preview.png" style="height: 200px;" class="rounded shadow-lg card-img-top img-fluid  mt-3">
+                        <source src="public/images/video_home.webm" type="video/webm">
                     </video>
 
                     <div class="card-body align-self-center">
