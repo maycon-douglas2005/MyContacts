@@ -10,10 +10,10 @@ class Database
 
 
 
-    private $database = 'lista_de_contatos'; //if0_41912816_
-    private $username = 'root'; //if0_41912816
-    private $password = ''; //zBiBljwVXSfQv
-    private $host = 'localhost'; //sql308.infinityfree.com
+    private $database = 'if0_41912816_lista_de_contatos'; //_
+    private $username = 'if0_41912816'; //
+    private $password = 'zBiBljwVXSfQv'; //
+    private $host = 'sql308.infinityfree.com'; //
 
 
     public function realizandoConexao()
