@@ -10,7 +10,9 @@ class Database
 
 
 
+
     private $database = 'if0_41912816_lista_de_contatos'; //_
+
     private $username = 'if0_41912816'; //
     private $password = 'zBiBljwVXSfQv'; //
     private $host = 'sql308.infinityfree.com'; //
