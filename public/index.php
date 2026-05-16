@@ -41,14 +41,17 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
                 <div class="textoEbtn d-flex flex-column mb-5">
                     <p class="lead">Gerencie seus contatos de maneira simples e eficiente com <mark>MyContacts</mark>.</p>
+
                     <a style="height: 72px; width: 320px;" class="shadow btn btn-outline-primary align-self-center" href="<?php echo $userLogado === true ? "/app/Views/contacts/listaDeContatos.php" : "/app/Views/auth/cadastro.php"; ?> ">
                         <p class="mt-3 fs-5">Gerenciar meus contatos</p>
                     </a>
                 </div>
 
                 <div class="card p-2  col-7 mb-3 mt-2 d-flex flex-column justify-content-center align-items-center">
+
                     <video autoplay muted loop playsinline preload="auto" poster="images/preview.png" style="height: 200px;" class="rounded shadow-lg card-img-top img-fluid  mt-3">
                         <source src="public/images/video_home.webm" type="video/webm">
+
                     </video>
 
                     <div class="card-body align-self-center">
