@@ -41,7 +41,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
                 <div class="textoEbtn d-flex flex-column mb-5">
                     <p class="lead">Gerencie seus contatos de maneira simples e eficiente com <mark>MyContacts</mark>.</p>
-                    <a style="height: 72px; width: 320px;" class="shadow btn btn-outline-primary align-self-center" href="../app/Views/auth/cadastro.php">
+                    <a style="height: 72px; width: 320px;" class="shadow btn btn-outline-primary align-self-center" href="<?php echo $userLogado === true ? "/app/Views/contacts/listaDeContatos.php" : "/app/Views/auth/cadastro.php"; ?> ">
                         <p class="mt-3 fs-5">Gerenciar meus contatos</p>
                     </a>
                 </div>
@@ -73,13 +73,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
     <?php require_once '../app/Views/partials/footer.php' ?>
 
-    <script>
-        const img = document.getElementById("imgList");
 
-        img.onerror = function() {
-            this.src = "/MyContacts/public/images/home.png";
-        };
-    </script>
 </body>
 
 </html>

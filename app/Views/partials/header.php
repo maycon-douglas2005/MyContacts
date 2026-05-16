@@ -10,7 +10,7 @@ if (isset($_SESSION['usuario']['id'])) {
     $userLogado = true;
     $nomeUsuario = $_SESSION['usuario']['nome'];
 } else {
-    $userLogado = false;
+    $userLogado = null;
 }
 $paginaAtual = basename($_SERVER['PHP_SELF']);
 $showNameUser = $nomeUsuario !== null ? "d-flex d-md-block" : "d-none";
@@ -27,22 +27,22 @@ $showNameUser = $nomeUsuario !== null ? "d-flex d-md-block" : "d-none";
 
             <li class=" mx-2 btn <?php if ($userLogado || $paginaAtual === "cadastro.php"): ?> d-none <?php endif; ?>">
                 <a style="font-family: 'Inter', sans-serif;" href="<?= isset($paginaIndex) ? "../app/Views/auth/cadastro.php" : "../auth/cadastro.php" ?>"
-                    class="mt-2 text-white text-decoration-none btn btn-outline-secondary">Cadastro</a>
+                    class="shadow mt-2 text-white text-decoration-none btn btn-outline-secondary">Cadastro</a>
             </li>
 
-            <li class="mx-2 btn <?php if ($userLogado || $paginaAtual === "login.php"): ?> d-none <?php endif; ?>">
+            <li class="mx-2 btn  <?php if ($userLogado || $paginaAtual === "login.php"): ?> d-none <?php endif; ?>">
                 <a style="font-family: 'Inter', sans-serif;" href="<?= isset($paginaIndex) ? "../app/Views/auth/login.php" : "../auth/login.php" ?>"
-                    class="mt-2 text-white text-decoration-none btn btn-outline-secondary">Login</a>
+                    class="shadow mt-2 text-white text-decoration-none btn btn-outline-secondary">Login</a>
             </li>
 
 
             <li class="mx-2 btn <?php if (!$userLogado): ?> d-none <?php endif; ?> ">
                 <a style="font-family: 'Inter', sans-serif;" href="
                 <?= isset($paginaIndex) ? "../app/Views/contacts/listaDeContatos.php" : "../contacts/listaDeContatos.php" ?>"
-                    class="text-dark text-decoration-none btn btn-outline-primary">Home</a>
+                    class="shadow  text-white text-decoration-none btn btn-outline-secondary">Home</a>
             </li>
 
-            <li class="align-self-center text-dark text-decoration-none btn btn-outline-primary mx-2 <?php if (!$userLogado): ?> d-none <?php endif; ?>" id="btnWarningLogout"
+            <li class="shadow align-self-center text-white text-decoration-none btn btn-outline-secondary mx-2 <?php if (!$userLogado): ?> d-none <?php endif; ?>" id="btnWarningLogout"
                 data-bs-toggle="modal"
                 data-bs-target="#modalWarningLogout">
 
