@@ -9,7 +9,7 @@ session_start();
     <?php require_once '../partials/header.php' ?>
 
 
-    <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="d-flex flex-row justify-content-center py-3 shadow mt-5 mb-3 container  flex-fill ">
+    <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="d-flex flex-row justify-content-center py-3 shadow mt-3 mb-3 container  flex-fill ">
         <!-- MODAL AVISO LOGOUT -->
 
         <div class="modal fade" id="modalWarningLogout" tabindex="-1">

@@ -11,7 +11,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 
 
-    <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="shadow mt-5 mb-3 container  flex-fill ">
+    <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="shadow mt-3 mb-3 container  flex-fill ">
 
         <!-- MODAL AVISO LOGOUT -->
 
