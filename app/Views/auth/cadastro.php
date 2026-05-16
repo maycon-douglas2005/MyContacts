@@ -66,7 +66,23 @@ require_once '../partials/head.php';
 
                     <input type="text" name="name" class=" form-control" placeholder="Nome" maxlength="100">
                     <input type="email" name="email" class=" form-control" placeholder="Email" maxlength="100" data-toggle="tooltip" data-placement="bottom" title="Formato Aceito: nome@domínio.com">
-                    <input type="password" name="password" class=" form-control" placeholder="Senha" maxlength="100">
+                    <div class="position-relative">
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            placeholder="Digite sua senha">
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="btn position-absolute top-50 end-0 translate-middle-y border-0 bg-transparent">
+                            <i class="bi bi-eye-slash" id="passwordIcon"></i>
+                        </button>
+
+                    </div>
                 </div>
 
             </div>
@@ -80,7 +96,7 @@ require_once '../partials/head.php';
     </main>
 
     <script src="../../../public/js/btnLogout.js"></script>
-
+    <script src="/public/js/togglePassword.js"></script>
     <?php require_once '../partials/footer.php' ?>
 </body>
 

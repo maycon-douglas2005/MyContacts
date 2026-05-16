@@ -51,7 +51,23 @@ session_start();
                 <div class="inputs  d-flex flex-column gap-4">
 
                     <input type="email" name="email" id="" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Formato Aceito: nome@domínio.com" placeholder="Email" maxlength="100">
-                    <input type="password" name="password" class="form-control" id="" placeholder="Senha" maxlength="100">
+                    <div class="position-relative">
+
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            placeholder="Digite sua senha">
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="btn position-absolute top-50 end-0 translate-middle-y border-0 bg-transparent">
+                            <i class="bi bi-eye-slash" id="passwordIcon"></i>
+                        </button>
+
+                    </div>
                 </div>
             </div>
 
@@ -63,6 +79,7 @@ session_start();
     </main>
 
     <script src="../../../public/js/btnLogout.js"></script>
+    <script src="/public/js/togglePassword.js"></script>
 
     <?php require_once '../partials/footer.php' ?>
 </body>
