@@ -11,7 +11,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 
 
-    <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="shadow mt-5 mb-3 container  flex-fill ">
+    <main style="background-color: #A0D0E4; border-bottom-left-radius: 10px; border-bottom-right-radius:10px" class="shadow mt-3 mb-3 container  flex-fill ">
 
         <!-- MODAL AVISO LOGOUT -->
 
@@ -35,31 +35,40 @@ require_once __DIR__ . '/../vendor/autoload.php';
         </div>
 
         <!-- FIM MODAL AVISO LOGOUT -->
-        <section class="apresentacao row d-flex flex-column align-items-center justify-content-center" style="height: 100%;">
-            <h1 class="col-auto mt-4">Bem-Vindo A Sua Lista De Contatos</h1>
-            <div class="tituloEparagrafo  col-10 d-flex flex-row align-items-center justify-content-between">
+        <section class="apresentacao row d-flex flex-row align-items-center justify-content-center" style="height: 100%;">
+            <div class="col-6 d-flex flex-column align-items-end justify-content-center">
+                <h1 class="col-auto " style="font-size: 40px;">Seus contatos organizados <br> em um só lugar.</h1>
 
-                <div class="textoEbtn d-flex flex-column mb-5">
-                    <p class="lead">Gerencie seus contatos de maneira simples e eficiente com <mark>MyContacts</mark>.</p>
+                <div class="textoEbtn d-flex flex-column align-items-center">
+                    <p class="lead align-self-center ms-4">Gerencie seus contatos de maneira simples e eficiente com <mark>MyContacts.</mark></p>
 
-                    <a style="height: 72px; width: 320px;" class="shadow btn btn-outline-primary align-self-center" href="/app/Views/auth/cadastro.php">
-                        <p class="mt-3 fs-5">Gerenciar meus contatos</p>
+                    <a style="height: 72px; width: 320px;" class="shadow text-center d-flex align-items-center justify-content-center btn fs-5 btn-outline-primary" href="<?php echo $userLogado === true ? "/app/Views/contacts/listaDeContatos.php" : "/app/Views/auth/cadastro.php"; ?> ">
+                        Gerenciar meus contatos
                     </a>
                 </div>
+            </div>
 
-                <div class="card p-2  col-7 mb-3 mt-2 d-flex flex-column justify-content-center align-items-center">
+            <div class="col-md-6 col-lg-6 d-flex flex-column align-items-center">
 
-                    <video autoplay muted loop playsinline preload="auto" poster="images/preview.png" style="height: 200px;" class="rounded shadow-lg card-img-top img-fluid  mt-3">
-                        <source src="public/images/video_home.webm" type="video/webm">
 
-                    </video>
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    poster="/public/images/poster.png"
+                    class=" rounded shadow-lg mt-3 "
+                    style="width: 100%; ">
+                    <source src="/public/images/video.webm" type="video/webm">
+                </video>
 
-                    <div class="card-body align-self-center">
-                        <p class="card-text text-muted small fst-italic">
-                            Veja o sistema em ação
-                        </p>
-                    </div>
+                <div class=" align-self-center">
+                    <p class="card-text text-muted small fst-italic">
+                        Veja o sistema em ação
+                    </p>
                 </div>
+
             </div>
 
         </section>
@@ -76,13 +85,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
     <?php require_once '../app/Views/partials/footer.php' ?>
 
-    <script>
-        const img = document.getElementById("imgList");
 
-        img.onerror = function() {
-            this.src = "/MyContacts/public/images/home.png";
-        };
-    </script>
 </body>
 
 </html>

@@ -8,9 +8,20 @@ function showCheckboxes() {
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("name", "contatoSelecionado");
     checkbox.setAttribute("class", "checkbox");
-    checkbox.classList.add("form-check-input", "mt-3", "checkbox");
+    checkbox.classList.add("form-check-input", "mt-3", "checkbox", "me-5");
+
     item.append(checkbox);
   });
+
+  // Criando Cabeçalho Check na tabela
+  const headCheck = document.createElement("th");
+  headCheck.innerText = "Selecionar";
+  headCheck.setAttribute("id", "checkDel");
+
+  const headCel = document.getElementById("cabecalhoCelular");
+  headCel.after(headCheck);
+  headCel.style.marginRight = "0";
+  headCel.style.marginLeft = "150px";
 }
 
 function create_btns_confirm_and_cancel() {
@@ -18,17 +29,17 @@ function create_btns_confirm_and_cancel() {
 
   // criando e inserindo btn Confirmar Exclusao
   const btnConfirm = document.createElement("button");
-  btnConfirm.innerText = "Confirmar Exclusão";
+  btnConfirm.innerText = "Excluir";
   btnConfirm.setAttribute("id", "btnConfirmExclusion");
   btnConfirm.classList.add("btn", "btn-danger", "align-self-center", "d-flex");
   btnsTables.append(btnConfirm);
 
   // criando e inserindo btn Cancelar Exclusão
   const btnCancel = document.createElement("button");
-  btnCancel.innerText = "Cancelar Exclusão";
+  btnCancel.innerText = "Cancelar";
   btnCancel.classList.add(
     "btn",
-    "btn-success",
+    "btn-secondary",
     "ms-2",
     "align-self-center",
     "d-flex",
@@ -59,6 +70,11 @@ function CancelExclusion() {
   document.getElementById("addContact").style.display = "flex";
   document.getElementById("editContact").style.display = "flex";
   document.getElementById("deleteContact").style.display = "flex";
+
+  document.getElementById("checkDel").remove();
+
+  document.getElementById("cabecalhoCelular").style.marginRight = "80px";
+  document.getElementById("cabecalhoCelular").style.marginLeft = "0px";
 }
 
 document.getElementById("btnsTable").addEventListener("click", (btn) => {
@@ -80,13 +96,14 @@ function deletarContato() {
   xhr.open("POST", "../../Controllers/ContatoController.php");
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onload = function () {
-    if(xhr.status === 200){
-      window.location.href = "../contacts/listaDeContatos.php?contatosDeletados=true";
+    if (xhr.status === 200) {
+      window.location.href =
+        "../contacts/listaDeContatos.php?contatosDeletados=true";
+    } else {
+      window.location.href =
+        "../contacts/listaDeContatos.php?contatosNaoDeletados=true";
     }
-    else {
-      window.location.href = "../contacts/listaDeContatos.php?contatosNaoDeletados=true";
-    }
-  }
+  };
   xhr.send(
     "contatosSelecionados=" +
       encodeURIComponent(JSON.stringify(contatosSelecionados)),
