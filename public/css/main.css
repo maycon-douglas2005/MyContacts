@@ -11,18 +11,6 @@ table {
   border-style: solid;
 }
 
-#btnsTable {
-  background-color: rgba(255, 255, 255, 0.801);
-  border-radius: 1rem;
-  padding: 10px;
-}
-
-#btnsTable:hover {
-  border: 2px;
-  border-color: rgba(255, 255, 255, 0.801);
-  border-style: solid;
-  box-shadow: 5px 5px 5px 1px;
-}
 #TituloListaDeContatos {
   background-color: rgba(255, 255, 255, 0.801);
   border-radius: 1em;
@@ -33,4 +21,57 @@ tbody tr:hover {
   border: 1px;
   border-color: rgba(0, 0, 0, 0.808);
   border-style: solid;
+}
+
+.contact-card-inner {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  transition: 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.contact-card-inner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.contact-input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.contact-name .contact-input {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.contact-info .contact-input {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.contact-actions {
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.contact-card-inner:hover .contact-actions {
+  opacity: 1;
+}
+
+#iconLogout {
+  background: transparent;
+  transition: color 0.2s ease;
+  color: white;
+  font-size: large;
+  margin: 0;
+  padding: 0;
+}
+#iconLogout:hover {
+  color: #dc3545;
 }
