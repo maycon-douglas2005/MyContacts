@@ -48,13 +48,19 @@ require_once __DIR__ . '/../vendor/autoload.php';
                 </div>
             </div>
 
-            <div class="  col-6 d-flex flex-column align-items-center justify-content-between">
+            <div class="col-md-6 col-lg-6 d-flex flex-column align-items-center">
 
 
-
-                <video autoplay muted loop playsinline preload="auto" poster="/public/images/preview.png" style="height: 325px;" class="bg-white rounded shadow-lg img-fluid  mt-3">
-                    <source src="/public/images/video_home.webm" type="video/webm">
-
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    poster="/public/images/poster.png"
+                    class=" rounded shadow-lg mt-3 "
+                    style="width: 100%; ">
+                    <source src="/public/images/video.webm" type="video/webm">
                 </video>
 
                 <div class=" align-self-center">

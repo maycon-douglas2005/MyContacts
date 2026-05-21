@@ -82,14 +82,14 @@ require_once '../partials/head.php';
 
     <!-- TOAST / ALERT AREA -->
     <div class="position-fixed top-0 start-50 translate-middle-x mt-3 z-3" style="width: 100%;"><?php if ($msgsSucesso['cadastro'] === true) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show w-25" style="left:37%;top: 5%;" role="alert">
                 <button class="btn-close" data-bs-dismiss="alert"></button>
                 <p>Cadastro realizado com sucesso!<br>Seja bem-vindo(a)!</p>
             </div>
         <?php
                                                                                                     $msgsSucesso['cadastro'] = null; //reset
                                                                                                 } elseif ($msgsSucesso['login'] === true) { ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show w-25" style="left:37%;top: 5%;" role="alert">
                 <button class="btn-close" data-bs-dismiss="alert"></button>
                 <p>Login realizado com sucesso!<br>Seja bem-vindo(a)!</p>
             </div>

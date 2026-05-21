@@ -29,13 +29,13 @@ $showNameUser = $nomeUsuario !== null ? "d-flex d-md-block" : "d-none";
 
             <li class=" mx-2 btn <?php if ($userLogado || $paginaAtual === "cadastro.php"): ?> d-none <?php endif; ?>">
                 <a style="font-family: 'Inter', sans-serif;" href="<?= isset($paginaIndex) ? "../app/Views/auth/cadastro.php" : "../auth/cadastro.php" ?>"
-                    class="shadow  text-white text-decoration-none btn btn-outline-secondary">Cadastro</a>
+                    class="shadow  text-white text-decoration-none btn btn-secondary">Cadastro</a>
             </li>
 
             <li class="mx-2 btn  <?php if ($userLogado || $paginaAtual === "login.php"): ?> d-none <?php endif; ?>">
                 <a style="font-family: 'Inter', sans-serif;" href="<?= isset($paginaIndex) ? "../app/Views/auth/login.php" : "../auth/login.php" ?>"
 
-                    class="shadow  text-white text-decoration-none btn btn-outline-secondary">Login</a>
+                    class="shadow  text-white text-decoration-none btn btn-secondary">Login</a>
             </li>
 
 
