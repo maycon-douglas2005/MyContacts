@@ -86,3 +86,16 @@ video {
 .no-arrow::after {
   display: none;
 }
+
+#divPaiAlerts {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  #divPaiAlerts {
+    width: 1000px;
+  }
+  #divPaiAlerts > div {
+    text-align: center;
+  }
+}
