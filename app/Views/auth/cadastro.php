@@ -35,7 +35,7 @@ require_once '../partials/head.php';
 
         <!-- FIM MODAL AVISO LOGOUT -->
 
-        <form action="../../Controllers/UsuarioController.php" method="POST" class="text-center rounded-3 p-4 w-50 bg-white col-auto shadow-lg  d-flex flex-column justify-content-between ">
+        <form action="../../Controllers/UsuarioController.php" method="POST" class="text-center rounded-3 p-4  w-75 bg-white col-auto shadow-lg  d-flex flex-column justify-content-evenly justify-content-sm-between ">
             <div class="alert alert-warning <?= isset($_GET['userDeslogado']) ? "d-flex" : "d-none" ?>">Você precisa estar logado antes de acessar a sua lista de contatos!</div>
             <header>
                 <h2 class="">Criando Sua Conta</h2>
