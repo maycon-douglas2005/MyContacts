@@ -42,7 +42,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
                 <div class="textoEbtn d-flex flex-column align-items-center">
                     <p class="lead  w-100 ms-0 ms-md-4 text-center text-lg-start">Gerencie seus contatos de maneira simples e eficiente com <mark>MyContacts.</mark></p>
 
-                    <a style="height: 72px; width: 320px;" class="shadow text-center d-flex align-items-center justify-content-center btn fs-5 btn-outline-primary" href="<?php echo $userLogado === true ? "/app/Views/contacts/listaDeContatos.php" : "/app/Views/auth/cadastro.php"; ?> ">
+                    <a style="height: 72px; width: 320px;" class="shadow text-center d-flex align-items-center justify-content-center btn fs-5 btn-primary" href="<?php echo $userLogado === true ? "/app/Views/contacts/listaDeContatos.php" : "/app/Views/auth/cadastro.php"; ?> ">
                         Gerenciar meus contatos
                     </a>
                 </div>

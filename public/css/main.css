@@ -78,10 +78,8 @@ tbody tr:hover {
 
 video {
   width: 100%;
-} /*
-@media screen and (min-width: 576px) and (max-width: 991.98px) {
-  video {
-    width: 500px;
-  }
 }
-*/
+
+.dropdown-toggle::after {
+  display: none;
+}
