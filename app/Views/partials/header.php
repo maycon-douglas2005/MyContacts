@@ -52,18 +52,22 @@ $showNameUser = $nomeUsuario !== null ? "d-flex d-md-block" : "d-none";
     </nav>
 
     <!-- HEADER MOBILE -->
-    <div class="header-mobile d-flex d-md-none justify-content-between  w-100">
+    <div class="header-mobile d-flex d-md-none justify-content-between  w-100 pt-2">
 
         <p style="font-family: 'Inter', sans-serif;" class="m-0 p-0 ms-2 text-white col-auto  fw-bold fs-5 logolink">MyContacts</p>
 
-        <div class="dropdown d-flex d-md-none p">
-            <p class="d-flex mb-0 text-light fw-semibold fs-5 dropdown-toggle pe-2" role="button" data-bs-toggle="dropdown"> <?php echo $nomeUsuario !== null ? "Olá, $nomeUsuario" : "<i class='bi bi-list'></i>"; ?></p>
+        <div class="dropdown  d-flex d-md-none p">
+            <p class="d-flex mt-1  text-light fw-semibold  dropdown-toggle pe-2 <?= $userLogado ? '' : 'no-arrow' ?>" role="button" data-bs-toggle="dropdown"> <?php echo $nomeUsuario !== null ? "Olá, $nomeUsuario" : "<i class='bi bi-list'></i>"; ?></p>
 
-            <div class="dropdown-menu ">
-                <a href="" class="dropdown-item">Cadastro</a>
-                <a href="" class="dropdown-item">Login</a>
-                <a href="" class="dropdown-item">Sair</a>
-            </div>
+            <ul class="dropdown-menu ">
+                <li class="<?php if ($userLogado || $paginaAtual === "cadastro.php"): ?> d-none <?php endif; ?>"> <a href="/app/Views/auth/cadastro.php" class="dropdown-item">Cadastro</a></li>
+                <li class="<?php if ($userLogado || $paginaAtual === "login.php"): ?> d-none <?php endif; ?>"> <a href="/app/Views/auth/login.php" class="dropdown-item">Login</a></li>
+                <li id="btnWarningLogout"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalWarningLogout" type="button" class="<?php if (!$userLogado): ?> d-none <?php endif; ?>">
+                    <p class="dropdown-item m-0 p-0 text-center ">Sair</p>
+                </li>
+            </ul>
         </div>
     </div>
 </header>
