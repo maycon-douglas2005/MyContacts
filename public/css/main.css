@@ -75,3 +75,14 @@ tbody tr:hover {
 #iconLogout:hover {
   color: #dc3545;
 }
+
+video {
+  width: 100%;
+}
+
+.dropdown-toggle::after {
+  margin-top: 12px;
+}
+.no-arrow::after {
+  display: none;
+}

@@ -33,7 +33,7 @@ session_start();
 
         <!-- FIM MODAL AVISO LOGOUT -->
 
-        <form action="../../Controllers/AuthController.php" method="POST" class="text-center rounded-3 p-4 w-50 bg-white col-auto shadow-lg  d-flex flex-column justify-content-center gap-5">
+        <form action="../../Controllers/AuthController.php" method="POST" class="text-center rounded-3 p-4 w-75 bg-white col-auto shadow-lg  d-flex flex-column justify-content-center gap-5">
             <header>
                 <h2 class="">Login</h2>
                 <p class="text-muted m-0">Por favor, preencha os campos abaixo:</p>
@@ -72,7 +72,7 @@ session_start();
             </div>
 
 
-            <button class="btn btn-primary w-75 rounded align-self-center ">Entrar</button>
+            <button class="btn btn-primary w-50 rounded align-self-center ">Entrar</button>
 
         </form>
 

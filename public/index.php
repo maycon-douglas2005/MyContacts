@@ -35,20 +35,20 @@ require_once __DIR__ . '/../vendor/autoload.php';
         </div>
 
         <!-- FIM MODAL AVISO LOGOUT -->
-        <section class="apresentacao row d-flex flex-row align-items-center justify-content-center" style="height: 100%;">
-            <div class="col-6 d-flex flex-column align-items-end justify-content-center">
-                <h1 class="col-auto " style="font-size: 40px;">Seus contatos organizados <br> em um só lugar.</h1>
+        <section class="apresentacao my-2 mt-lg-0 row d-flex flex-column flex-lg-row align-items-center justify-content-center" style="height: 100%;">
+            <div class=" col-12 col-lg-5 d-flex flex-column align-items-center justify-content-center">
+                <h1 class="ms-0 ms-md-4 ms-xl-3 w-100 text-center text-lg-start" style="font-size: 34px; font-weight: 700;">Seus contatos organizados <br> em um só lugar.</h1>
 
                 <div class="textoEbtn d-flex flex-column align-items-center">
-                    <p class="lead align-self-center ms-4">Gerencie seus contatos de maneira simples e eficiente com <mark>MyContacts.</mark></p>
+                    <p class="lead  w-100 ms-0 ms-md-4 text-center text-lg-start">Gerencie seus contatos de maneira simples e eficiente com <mark>MyContacts.</mark></p>
 
-                    <a style="height: 72px; width: 320px;" class="shadow text-center d-flex align-items-center justify-content-center btn fs-5 btn-outline-primary" href="<?php echo $userLogado === true ? "/app/Views/contacts/listaDeContatos.php" : "/app/Views/auth/cadastro.php"; ?> ">
+                    <a style="height: 72px; width: 320px;" class="shadow text-center d-flex align-items-center justify-content-center btn fs-5 btn-primary" href="<?php echo $userLogado === true ? "/app/Views/contacts/listaDeContatos.php" : "/app/Views/auth/cadastro.php"; ?> ">
                         Gerenciar meus contatos
                     </a>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-6 d-flex flex-column align-items-center">
+            <div class="col-12 col-lg-7 d-none d-md-flex flex-column align-items-center">
 
 
                 <video
@@ -58,13 +58,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
                     playsinline
                     preload="auto"
                     poster="/public/images/poster.png"
-                    class=" rounded shadow-lg mt-3 "
-                    style="width: 100%; ">
+                    class=" rounded shadow-lg mt-3 ">
                     <source src="/public/images/video.webm" type="video/webm">
                 </video>
 
                 <div class=" align-self-center">
-                    <p class="card-text text-muted small fst-italic">
+                    <p class="card-text text-muted small fst-italic mb-2 mb-lg-0">
                         Veja o sistema em ação
                     </p>
                 </div>
@@ -76,7 +75,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 
 
-        </div>
+
 
     </main>
 
